@@ -8,8 +8,21 @@
 import SwiftUI
 
 struct ExchangesView: View {
+    @StateObject private var viewModel: ExchangesViewModel = ExchangesViewModel()
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            List(viewModel.exchanges, id: \.exchangeID) { exchangeDetailsVM in
+                NavigationLink(destination: CurrenciesView()) {
+                    Text(exchangeDetailsVM.exchangeName)
+                }
+            }
+            .navigationTitle(viewModel.header)
+            .navigationBarTitleDisplayMode(/*@START_MENU_TOKEN@*/.inline/*@END_MENU_TOKEN@*/)
+            .task {
+                await viewModel.fetchExchanges()
+            }
+            
+        }
     }
 }
 
