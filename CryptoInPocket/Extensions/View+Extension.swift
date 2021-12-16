@@ -8,9 +8,9 @@
 import SwiftUI
 
 extension View {
-    func showArrowUpDown(for value: Double) -> some View {
-        Image(systemName: value > 0 ? "arrow.up" : "arrow.down")
-            .foregroundColor(value > 0 ? .green : .red)
+    func showArrowUpDown(for value: Bool) -> some View {
+        Image(systemName: value ? "arrow.up" : "arrow.down")
+            .foregroundColor(value ? .green : .red)
     }
     
     func showPriceChangesInPercent(for periodTitle: String, and value: Double) -> some View {

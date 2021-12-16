@@ -16,13 +16,13 @@ class NetworkManagerAsync {
     
     func fetchExchanges() async throws -> [Exchange] {
         
-       guard let values = try? await fetchData(
-        dataType: AllExchangesDescription.self,
-        from: Route.baseURL.rawValue + Route.exchangesAll.rawValue,
-        convertFromSnake: false
-       ).exchanges else { throw NetworkError.noData }
-       
-        return values
+        guard let values = try? await fetchData(
+            dataType: AllExchangesDescription.self,
+            from: Route.baseURL.rawValue + Route.exchangesAll.rawValue,
+            convertFromSnake: false
+        ) else { throw NetworkError.noData }
+        
+        return values.exchanges
     }
     
     func fetchExchangeBy(id: String) async throws -> Exchange {
@@ -31,6 +31,35 @@ class NetworkManagerAsync {
             from: Route.baseURL.rawValue + Route.exchangesAll.rawValue +  "/" +  id ,
             convertFromSnake: false) else { throw NetworkError.noData}
         return data.exchange
+    }
+    
+    func fetchMarketsForExchange(id: String) async throws -> [Market] {
+        let url = Route.baseURL.rawValue + Route.exchangesAll.rawValue + "/" +  id + Route.marketsAll.rawValue
+   
+        guard let values = try? await fetchData(
+            dataType: AllMarketsDescription.self,
+            from: url,
+            convertFromSnake: false
+        ).markets else { throw NetworkError.noData }
+        return values
+    }
+    
+    func fetchCurrencies() async throws -> [Currency] {
+        guard let values = try? await fetchData(
+            dataType: AllCurrenciesDescription.self,
+            from: Route.baseURL.rawValue + Route.currenciesAll.rawValue,
+            convertFromSnake: false
+        ) else { throw NetworkError.noData }
+        
+        return values.assets
+    }
+    
+    func fetchCurrencyBy(id: String) async throws -> Currency {
+        guard let data = try? await fetchData(
+            dataType: RemoteCurrency.self,
+            from: Route.baseURL.rawValue + Route.currenciesAll.rawValue +  "/" +  id ,
+            convertFromSnake: false) else { throw NetworkError.noData}
+        return data.asset
     }
 }
 

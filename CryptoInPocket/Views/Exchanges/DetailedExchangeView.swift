@@ -14,7 +14,7 @@ struct DetailedExchangeView: View {
     let backgroundColor: Color
     
     var body: some View {
-
+        VStack{
             VStack(spacing: 16){
                 HStack{
                     Image(systemName: "v.circle.fill")
@@ -36,7 +36,10 @@ struct DetailedExchangeView: View {
                 .background(backgroundColor)
                 .clipShape(RoundedRectangle(cornerRadius: 20))
                 .navigationTitle(detailedViewModel.exchangeName)
-                .navigationBarTitleDisplayMode(/*@START_MENU_TOKEN@*/.inline/*@END_MENU_TOKEN@*/)
+            .navigationBarTitleDisplayMode(/*@START_MENU_TOKEN@*/.inline/*@END_MENU_TOKEN@*/)
+            
+            MarketsForExchangeSectionView(id: detailedViewModel.exchangeID)
+        }
     }
 }
 
