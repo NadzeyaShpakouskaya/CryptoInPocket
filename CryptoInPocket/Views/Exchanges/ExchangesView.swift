@@ -9,10 +9,15 @@ import SwiftUI
 
 struct ExchangesView: View {
     @StateObject private var viewModel: ExchangesViewModel = ExchangesViewModel()
+    
     var body: some View {
         NavigationView {
             List(viewModel.exchanges, id: \.exchangeID) { exchangeDetailsVM in
-                NavigationLink(destination: CurrenciesView()) {
+                NavigationLink(destination:DetailedExchangeView(
+                    detailedViewModel: exchangeDetailsVM,
+                    textColor: .indigo,
+                    backgroundColor: Color(UIColor.systemGray6)
+                ).padding()) {
                     Text(exchangeDetailsVM.exchangeName)
                 }
             }
@@ -21,7 +26,6 @@ struct ExchangesView: View {
             .task {
                 await viewModel.fetchExchanges()
             }
-            
         }
     }
 }
@@ -29,5 +33,6 @@ struct ExchangesView: View {
 struct ExchangesView_Previews: PreviewProvider {
     static var previews: some View {
         ExchangesView()
+            .environmentObject(ExchangesViewModel())
     }
 }
