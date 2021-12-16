@@ -13,37 +13,38 @@ struct MarketsForExchangeSectionView: View {
     let id: String
     
     var body: some View {
-        VStack{
-//            List(viewModel.marketsForExchange, id: \.id) { detailedVM in
-//                MarketForExchangeDetailedView(detailedViewModel: detailedVM)
-//            }
-            List{
-                Section( header:
-                            HStack {
-                                Text("Markets")
-                                    .bold()
-                                    .font(.title)
-                                    .foregroundColor(.indigo)
-                                Spacer()
-                                Button("Hide") {
-                                }
-                            }
-                ) {
-                    ForEach(viewModel.marketsForExchange, id: \.id) { detailedVM in
-                        MarketForExchangeDetailedView(detailedViewModel: detailedVM)
-                    }
-                }
-            }.task {
-               await viewModel.fetchMarketsForExchange(with: id)
+        VStack {
+            sectionHeaderView
+            Spacer()
+            if !viewModel.isMarketsHidden {
+                List(viewModel.marketsForExchange, id: \.id) { detailedVM in
+                    MarketForExchangeDetailedView(detailedViewModel: detailedVM)
+                }.listStyle(.plain)
             }
-
+        }.task {
+            await viewModel.fetchMarketsForExchange(with: id)
         }
+    }
+    
+    private var sectionHeaderView: some View {
+        HStack{
+            Text(viewModel.headerTitle)
+            
+            Spacer()
+            Button(viewModel.buttonTitle){
+                viewModel.hideMarketsButtonPressed()
+            }
+        }
+        .frame(height: 40)
+        .foregroundColor(.indigo)
+        
     }
     
 }
 
 struct MarketsSectionView_Previews: PreviewProvider {
     static var previews: some View {
-        MarketsForExchangeSectionView(id: "BINANCE").environmentObject(MarketsForExchangeSectionViewModel())
+        MarketsForExchangeSectionView(id: "BINANCE")
+            .environmentObject(MarketsForExchangeSectionViewModel())
     }
 }

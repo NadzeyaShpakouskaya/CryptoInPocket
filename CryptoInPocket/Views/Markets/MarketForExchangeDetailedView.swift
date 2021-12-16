@@ -11,12 +11,19 @@ struct MarketForExchangeDetailedView: View {
     @ObservedObject var detailedViewModel: MarketForExchangeDetailedViewModel
     
     var body: some View {
-        HStack{
+        HStack(spacing: 8){
             showArrowUpDown(for: detailedViewModel.isPriceIncreased)
             Text(detailedViewModel.baseCurrency)
-                .frame(width: 100)
+                .bold()
+                .font(.subheadline)
+                .frame(width: 75, alignment: .leading)
             Text(detailedViewModel.exchangeCurrencyInfo)
+                .font(.subheadline)
+                .frame(alignment: .leading)
+            Spacer()
             Text(detailedViewModel.tradeVolume)
+                .font(.footnote)
+                .frame(width: 50)
         }
     }
 }
