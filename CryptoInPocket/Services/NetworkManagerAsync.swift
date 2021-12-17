@@ -40,8 +40,8 @@ class NetworkManagerAsync {
             dataType: AllMarketsDescription.self,
             from: url,
             convertFromSnake: false
-        ).markets else { throw NetworkError.noData }
-        return values
+        ) else { throw NetworkError.noData }
+        return values.markets
     }
     
     func fetchCurrencies() async throws -> [Currency] {
@@ -61,6 +61,18 @@ class NetworkManagerAsync {
             convertFromSnake: false) else { throw NetworkError.noData}
         return data.asset
     }
+    
+    func fetchMarketsForCurrency(id: String) async throws -> [Market] {
+        let url = Route.baseURL.rawValue + Route.currenciesAll.rawValue + "/" +  id + Route.marketsAll.rawValue
+   
+        guard let values = try? await fetchData(
+            dataType: AllMarketsDescription.self,
+            from: url,
+            convertFromSnake: false
+        ) else { throw NetworkError.noData }
+        return values.markets
+    }
+    
 }
 
 //MARK: - Privates methods

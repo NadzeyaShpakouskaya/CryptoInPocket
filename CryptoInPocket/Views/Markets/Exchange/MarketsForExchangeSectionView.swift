@@ -14,7 +14,12 @@ struct MarketsForExchangeSectionView: View {
     
     var body: some View {
         VStack {
-            sectionHeaderView
+           SectionHeaderView(
+            headerTitle: viewModel.headerTitle,
+            buttonTitle: viewModel.buttonTitle,
+            color: .indigo) {
+                viewModel.hideMarketsButtonPressed()
+            }
             Spacer()
             if !viewModel.isMarketsHidden {
                 List(viewModel.marketsForExchange, id: \.id) { detailedVM in
@@ -25,21 +30,7 @@ struct MarketsForExchangeSectionView: View {
             await viewModel.fetchMarketsForExchange(with: id)
         }
     }
-    
-    private var sectionHeaderView: some View {
-        HStack{
-            Text(viewModel.headerTitle)
-            
-            Spacer()
-            Button(viewModel.buttonTitle){
-                viewModel.hideMarketsButtonPressed()
-            }
-        }
-        .frame(height: 40)
-        .foregroundColor(.indigo)
-        
-    }
-    
+
 }
 
 struct MarketsSectionView_Previews: PreviewProvider {

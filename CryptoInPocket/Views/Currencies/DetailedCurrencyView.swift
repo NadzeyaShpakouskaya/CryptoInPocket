@@ -22,6 +22,7 @@ struct DetailedCurrencyView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 12))
             
             Spacer()
+            MarketsForCurrencySectionView(id: detailedViewModel.currencyId)
         }.navigationTitle(detailedViewModel.currencyName)
             .padding()
     }
