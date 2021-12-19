@@ -8,16 +8,16 @@
 import SwiftUI
 
 struct SectionHeaderView: View {
-    let headerTitle: String
-    let buttonTitle: String
+    @ObservedObject var viewModel: SectionHeaderViewModel = SectionHeaderViewModel()
+
     let color: Color
     let action: () -> Void
     
     var body: some View {
         HStack{
-            Text(headerTitle)
+            Text(viewModel.headerTitle)
             Spacer()
-            Button(buttonTitle, action: action)
+            Button(viewModel.buttonTitle, action: action)
         }
         .frame(height: 40)
         .foregroundColor(color)
@@ -26,6 +26,6 @@ struct SectionHeaderView: View {
 
 struct SectionHeaderView_Previews: PreviewProvider {
     static var previews: some View {
-        SectionHeaderView(headerTitle: "Markets", buttonTitle: "Hide", color: .orange, action: {})
+        SectionHeaderView(viewModel: SectionHeaderViewModel(), color: .orange, action: {})
     }
 }

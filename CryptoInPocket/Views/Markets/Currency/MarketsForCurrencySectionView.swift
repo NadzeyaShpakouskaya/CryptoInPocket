@@ -14,10 +14,7 @@ struct MarketsForCurrencySectionView: View {
     
     var body: some View {
         VStack {
-            SectionHeaderView(
-                headerTitle: viewModel.headerTitle,
-                buttonTitle: viewModel.buttonTitle,
-                color: .orange)  {
+            SectionHeaderView(color: .orange)  {
                     viewModel.hideMarketsButtonPressed()
                 }
             Spacer()

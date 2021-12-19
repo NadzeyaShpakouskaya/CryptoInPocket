@@ -14,14 +14,11 @@ struct MarketsForExchangeSectionView: View {
     
     var body: some View {
         VStack {
-           SectionHeaderView(
-            headerTitle: viewModel.headerTitle,
-            buttonTitle: viewModel.buttonTitle,
-            color: .indigo) {
+           SectionHeaderView(color: .indigo) {
                 viewModel.hideMarketsButtonPressed()
             }
             Spacer()
-            if !viewModel.isMarketsHidden {
+            if !viewModel.isMarketsSectionHidden {
                 List(viewModel.marketsForExchange, id: \.id) { detailedVM in
                     MarketForExchangeDetailedView(detailedViewModel: detailedVM)
                 }.listStyle(.plain)

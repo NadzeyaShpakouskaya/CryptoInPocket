@@ -10,6 +10,5 @@ import Foundation
 struct UserData: Codable, Hashable {
     var exchangesNames: [String] = []
     var currenciesNames: [String] = []
-    var isMarketsForExchangeHidden: Bool = false
-    var isMarketsForCurrencyHidden: Bool = false
+    var isMarketsSectionHidden: Bool = false
 }

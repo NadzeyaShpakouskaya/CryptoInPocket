@@ -9,22 +9,19 @@ import Foundation
 
 @MainActor class MarketsForExchangeSectionViewModel: ObservableObject {
     @Published var marketsForExchange: [MarketForExchangeDetailedViewModel] = []
-    @Published var isMarketsHidden: Bool = false
-    //TO DO: - read status market section from userDefaults
-    
-    var headerTitle: String {
-        "Markets"
+    @Published var isMarketsSectionHidden: Bool  {
+        didSet {
+            LocalDataStorageManager.shared.saveSectionPresentedStatus(as: isMarketsSectionHidden)
+        }
     }
     
-    var buttonTitle: String {
-        isMarketsHidden ? "Show" : "Hide"
+    init() {
+        isMarketsSectionHidden = LocalDataStorageManager.shared.loadData().isMarketsSectionHidden
     }
-    
+
     func hideMarketsButtonPressed(){
-        isMarketsHidden.toggle()
-        //TO DO: - save status market section in userDefaults
+        isMarketsSectionHidden.toggle()
     }
-    
  
     func fetchMarketsForExchange(with id: String) async {
         marketsForExchange = []
