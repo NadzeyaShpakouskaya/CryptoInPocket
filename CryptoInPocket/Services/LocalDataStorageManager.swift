@@ -49,13 +49,20 @@ class LocalDataStorageManager {
         saveData(data)
     }
     
+    func deleteCurrencyFromFavorite(with id: String) {
+        var data = loadData()
+        guard let index = data.currenciesNames.firstIndex(of: id) else { return }
+        data.currenciesNames.remove(at: index)
+        saveData(data)
+    }
+    
     func addToFavorite(exchange: Exchange) {
         var data = loadData()
         data.exchangesNames.append(exchange.exchangeId)
         saveData(data)
     }
     
-    func addToFavoriteExchangeBy(id: String) {
+    func addExchangeToFavoriteBy(id: String) {
         var data = loadData()
         data.exchangesNames.append(id)
         saveData(data)
@@ -64,6 +71,13 @@ class LocalDataStorageManager {
     func deleteExchangeFromFavorite(_ offsetIndex: IndexSet) {
         var data = loadData()
         data.exchangesNames.remove(atOffsets: offsetIndex)
+        saveData(data)
+    }
+    
+    func deleteExchangeFromFavorite(with id: String) {
+        var data = loadData()
+        guard let index = data.exchangesNames.firstIndex(of: id) else { return }
+        data.exchangesNames.remove(at: index)
         saveData(data)
     }
 }

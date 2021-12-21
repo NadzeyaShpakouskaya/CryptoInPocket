@@ -14,8 +14,8 @@ class FavoritesViewModel: ObservableObject {
     
     init() {
         let data = LocalDataStorageManager.shared.loadData()
-        self.displayedExchanges = data.exchangesNames.sorted()
-        self.displayedCurrencies = data.currenciesNames.sorted()
+       displayedExchanges = data.exchangesNames.sorted()
+        displayedCurrencies = data.currenciesNames.sorted()
     }
     
 }

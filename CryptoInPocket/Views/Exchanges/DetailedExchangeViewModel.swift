@@ -8,6 +8,15 @@
 import Foundation
 
 class DetailedExchangeViewModel: ObservableObject {
+    @Published var isFavorite: Bool {
+        didSet {
+            if isFavorite {
+                LocalDataStorageManager.shared.addExchangeToFavoriteBy(id: exchange.exchangeId)
+            } else {
+                LocalDataStorageManager.shared.deleteExchangeFromFavorite(with: exchange.exchangeId)
+            }
+        }
+    }
     
     
     var exchangeID: String {
@@ -41,5 +50,10 @@ class DetailedExchangeViewModel: ObservableObject {
     
     init(exchange: Exchange){
         self.exchange = exchange
+        isFavorite = LocalDataStorageManager.shared.loadData().exchangesNames.contains(exchange.exchangeId)
+    }
+    
+    func favoriteButtonPressed(){
+        isFavorite.toggle()
     }
 }

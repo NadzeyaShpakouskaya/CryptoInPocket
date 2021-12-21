@@ -26,6 +26,7 @@
 		FDADC29C276C68E700938E57 /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDADC29B276C68E700938E57 /* FavoritesViewModel.swift */; };
 		FDADC29E276C695D00938E57 /* LocalDataStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDADC29D276C695D00938E57 /* LocalDataStorageManager.swift */; };
 		FDADC2A0276F199500938E57 /* SectionHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDADC29F276F199500938E57 /* SectionHeaderViewModel.swift */; };
+		FDADC2A22771E75600938E57 /* FavoriteButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDADC2A12771E75600938E57 /* FavoriteButtonView.swift */; };
 		FDDBB8EC276A39E400B17DE0 /* CryptoInPocketApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDBB8EB276A39E400B17DE0 /* CryptoInPocketApp.swift */; };
 		FDDBB8F0276A39E700B17DE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FDDBB8EF276A39E700B17DE0 /* Assets.xcassets */; };
 		FDDBB8F3276A39E700B17DE0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FDDBB8F2276A39E700B17DE0 /* Preview Assets.xcassets */; };
@@ -81,6 +82,7 @@
 		FDADC29B276C68E700938E57 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
 		FDADC29D276C695D00938E57 /* LocalDataStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataStorageManager.swift; sourceTree = "<group>"; };
 		FDADC29F276F199500938E57 /* SectionHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderViewModel.swift; sourceTree = "<group>"; };
+		FDADC2A12771E75600938E57 /* FavoriteButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteButtonView.swift; sourceTree = "<group>"; };
 		FDDBB8E8276A39E400B17DE0 /* CryptoInPocket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoInPocket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDDBB8EB276A39E400B17DE0 /* CryptoInPocketApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoInPocketApp.swift; sourceTree = "<group>"; };
 		FDDBB8EF276A39E700B17DE0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 			isa = PBXGroup;
 			children = (
 				FDDBB915276A3A1100B17DE0 /* MainView.swift */,
+				FDADC2A12771E75600938E57 /* FavoriteButtonView.swift */,
 				FDADC275276AF22100938E57 /* Exchanges */,
 				FDADC278276AF67600938E57 /* Currencies */,
 				FDADC29A276C68BE00938E57 /* Favorites */,
@@ -443,6 +446,7 @@
 				FDDBB925276A3BCB00B17DE0 /* Currency.swift in Sources */,
 				FDADC297276C63FE00938E57 /* SectionHeaderView.swift in Sources */,
 				FDADC26F276A40D100938E57 /* DetailedExchangeViewModel.swift in Sources */,
+				FDADC2A22771E75600938E57 /* FavoriteButtonView.swift in Sources */,
 				FDADC271276A444700938E57 /* Double+Extension.swift in Sources */,
 				FDADC280276AFD3B00938E57 /* DetailedCurrencyViewModel.swift in Sources */,
 				FDADC277276AF26700938E57 /* DetailedExchangeView.swift in Sources */,

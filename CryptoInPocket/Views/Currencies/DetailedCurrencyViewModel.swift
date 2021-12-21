@@ -8,6 +8,18 @@
 import Foundation
 
 class DetailedCurrencyViewModel: ObservableObject {
+    
+    @Published var isFavorite: Bool {
+        didSet {
+            if isFavorite {
+                LocalDataStorageManager.shared.addCurrencyToFavoriteBy(id: currency.assetId)
+            } else {
+                LocalDataStorageManager.shared.deleteCurrencyFromFavorite(with: currency.assetId)
+            }
+        }
+    }
+    
+    
     var currencyId: String {
         currency.assetId
     }
@@ -17,7 +29,7 @@ class DetailedCurrencyViewModel: ObservableObject {
     }
     
     var priceInfo: String {
-       "Median price: $\(Double.formatNumber(currency.price ?? 0))"
+        "Median price: $\(Double.formatNumber(currency.price ?? 0))"
     }
     
     var tradingVolumeInfo: String {
@@ -65,6 +77,12 @@ class DetailedCurrencyViewModel: ObservableObject {
     
     init(_ currency: Currency) {
         self.currency = currency
+        isFavorite = LocalDataStorageManager.shared.loadData().currenciesNames.contains(currency.assetId)
+    }
+    
+    
+    func favoriteButtonPressed(){
+        isFavorite.toggle()
     }
     
     

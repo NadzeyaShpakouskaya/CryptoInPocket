@@ -40,7 +40,11 @@ extension DetailedCurrencyView {
                 Text(detailedViewModel.currencyId)
                     .bold()
                     .font(.title)
-                //TODO: Add to favorite button
+                FavoriteButtonView(
+                    color: .orange,
+                    isFavorite: detailedViewModel.isFavorite,
+                    action: detailedViewModel.favoriteButtonPressed
+                )
                 
             }.foregroundColor(.orange)
         }

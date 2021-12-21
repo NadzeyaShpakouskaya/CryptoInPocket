@@ -29,7 +29,11 @@ struct DetailedExchangeView: View {
                         destination:detailedViewModel.urlForSiteLink
                     )
                     Spacer()
-//                TODO: - Implement "Add to Favorite" button
+                    FavoriteButtonView(
+                        color: .indigo,
+                        isFavorite: detailedViewModel.isFavorite,
+                        action: detailedViewModel.favoriteButtonPressed
+                    )
                 }
             }.padding()
                 .foregroundColor(textColor)
