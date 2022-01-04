@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ExchangesView: View {
-    @StateObject private var viewModel: ExchangesViewModel = ExchangesViewModel()
+    @ObservedObject var viewModel: ExchangesViewModel
     
     var body: some View {
         NavigationView {
@@ -32,7 +32,7 @@ struct ExchangesView: View {
 
 struct ExchangesView_Previews: PreviewProvider {
     static var previews: some View {
-        ExchangesView()
-            .environmentObject(ExchangesViewModel())
+        ExchangesView(viewModel: ExchangesViewModel())
+//            .environmentObject(ExchangesViewModel())
     }
 }

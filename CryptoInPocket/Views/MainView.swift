@@ -10,17 +10,17 @@ import SwiftUI
 struct MainView: View {
     var body: some View {
         TabView {
-            ExchangesView()
+            ExchangesView(viewModel: ExchangesViewModel())
                 .tabItem {
                     Image(systemName: "building.columns.fill")
                     Text("Exchanges")
                 }
-            CurrenciesView()
+            CurrenciesView(viewModel: CurrenciesViewModel())
                 .tabItem {
                     Image(systemName: "bitcoinsign.square.fill")
                     Text("Currencies")
                 }
-            FavoritesView()
+            FavoritesView(viewModel: FavoritesViewModel())
                 .tabItem {
                     Image(systemName: "heart.circle.fill")
                     Text("My favorite")

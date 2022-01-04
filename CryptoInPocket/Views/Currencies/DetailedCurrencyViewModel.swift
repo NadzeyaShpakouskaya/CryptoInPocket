@@ -11,10 +11,10 @@ class DetailedCurrencyViewModel: ObservableObject {
     
     @Published var isFavorite: Bool {
         didSet {
-            if isFavorite {
-                LocalDataStorageManager.shared.addCurrencyToFavoriteBy(id: currency.assetId)
-            } else {
+            if oldValue {
                 LocalDataStorageManager.shared.deleteCurrencyFromFavorite(with: currency.assetId)
+            } else {
+                LocalDataStorageManager.shared.addCurrencyToFavoriteBy(id: currency.assetId)
             }
         }
     }
@@ -28,8 +28,12 @@ class DetailedCurrencyViewModel: ObservableObject {
         currency.name ?? currency.assetId
     }
     
+    var currencyDetailed: String {
+        "\(currencyName) (\(currencyId))"
+    }
+    
     var priceInfo: String {
-        "Median price: $\(Double.formatNumber(currency.price ?? 0))"
+        "Price: $ \(Double.formatNumber(currency.price ?? 0))"
     }
     
     var tradingVolumeInfo: String {

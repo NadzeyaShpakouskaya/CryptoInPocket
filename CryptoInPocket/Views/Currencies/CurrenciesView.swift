@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CurrenciesView: View {
-    @StateObject private var viewModel: CurrenciesViewModel = CurrenciesViewModel()
+    @ObservedObject var viewModel: CurrenciesViewModel
     
     var body: some View {
         NavigationView {
@@ -30,6 +30,7 @@ struct CurrenciesView: View {
 
 struct CurrenciesView_Previews: PreviewProvider {
     static var previews: some View {
-        CurrenciesView().environmentObject(CurrenciesViewModel())
+        CurrenciesView(viewModel: CurrenciesViewModel())
+//            .environmentObject(CurrenciesViewModel())
     }
 }

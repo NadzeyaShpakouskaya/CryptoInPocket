@@ -86,6 +86,20 @@ struct PercentageChangesView: View {
     }
 }
 
+struct PercentageChangesHorizontalView: View {
+    let title: String
+    let value: String
+    let isIncreased: Bool
+    
+    var body: some View {
+        HStack {
+            Text(title)
+            Text(value)
+                .foregroundColor(isIncreased ? .green : .red)
+        }
+    }
+}
+
 struct DetailedCurrencyView_Previews: PreviewProvider {
     static var previews: some View {
         DetailedCurrencyView(

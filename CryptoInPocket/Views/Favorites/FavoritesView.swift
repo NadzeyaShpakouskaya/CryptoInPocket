@@ -8,16 +8,77 @@
 import SwiftUI
 
 struct FavoritesView: View {
-    @StateObject var viewModel: FavoritesViewModel = FavoritesViewModel()
+    @ObservedObject var viewModel: FavoritesViewModel
+    
+    @State private var showCurrencyPopover: Bool = false
+    @State private var showExchangePopover: Bool = false
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            ZStack{
+                List{
+                    Section(header: Text(viewModel.exchangesSectionHeader)) {
+                        ForEach(viewModel.favoriteExchangesNames, id: \.self) { title in
+                            RowView(title: title)
+                                .onTapGesture {
+                                    Task{
+                                        await viewModel.fetchExchangeWith(id: title)
+                                    }
+                                    showExchangePopover.toggle()
+                                }
+                        }
+                    }
+                    
+                    Section(header: Text(viewModel.currenciesSectionHeader)) {
+                        ForEach(viewModel.favoriteCurrenciesNames, id: \.self) { title in
+                            RowView(title: title)
+                                .onTapGesture {
+                                    Task{
+                                        await viewModel.fetchCurrencyWith(id: title)
+                                    }
+                                    showCurrencyPopover.toggle()
+                                }
+                        }
+                    }
+                }
+                if showCurrencyPopover {
+                    if let selected = viewModel.selectedCurrency {
+                        FavoritePopUpCurrencyView(detailedViewModel: selected, showPopUp: $showCurrencyPopover)
+                            .animation(.easeInOut, value: showCurrencyPopover)
+                    }
+                }
+                
+                if showExchangePopover {
+                    if let selected = viewModel.selectedExchange {
+                        FavoritePopUpExchangeView(detailedViewModel: selected, showPopUp: $showExchangePopover)
+
+                            .animation(.easeInOut, value: showExchangePopover)
+                    }
+                }
+                
+            }
+            .navigationTitle(viewModel.mainHeader)
+            .navigationBarTitleDisplayMode(/*@START_MENU_TOKEN@*/.inline/*@END_MENU_TOKEN@*/)
+        }
+    }
+}
+
+struct RowView: View {
+    let title: String
+    
+    var body: some View{
+        HStack{
+            Text(title).multilineTextAlignment(.leading)
+            Spacer()
+            Image(systemName: "info").foregroundColor(.orange)
+            
+        }.contentShape(Rectangle())
+        
     }
 }
 
 struct FavoritesView_Previews: PreviewProvider {
     static var previews: some View {
-        FavoritesView()
-            .environmentObject(FavoritesViewModel())
+        FavoritesView(viewModel: FavoritesViewModel())
     }
 }

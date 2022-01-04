@@ -37,7 +37,7 @@ extension Currency {
 }
 
 // MARK: - Test Data
-extension Currency{
+extension Currency {
     static func getTestCurrency() -> Currency {
         Currency(assetId: "USDT",
                  name: "Tether",

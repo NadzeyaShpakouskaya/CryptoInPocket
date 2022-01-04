@@ -10,10 +10,10 @@ import Foundation
 class DetailedExchangeViewModel: ObservableObject {
     @Published var isFavorite: Bool {
         didSet {
-            if isFavorite {
-                LocalDataStorageManager.shared.addExchangeToFavoriteBy(id: exchange.exchangeId)
-            } else {
+            if oldValue {
                 LocalDataStorageManager.shared.deleteExchangeFromFavorite(with: exchange.exchangeId)
+            } else {
+                LocalDataStorageManager.shared.addExchangeToFavoriteBy(id: exchange.exchangeId)
             }
         }
     }

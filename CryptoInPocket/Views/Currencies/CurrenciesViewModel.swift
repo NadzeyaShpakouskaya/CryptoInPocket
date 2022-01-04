@@ -6,13 +6,13 @@
 //
 
 import Foundation
-
-@MainActor class CurrenciesViewModel: ObservableObject {
+class CurrenciesViewModel: ObservableObject {
     @Published var currencies: [DetailedCurrencyViewModel] = []
     
     let header = "Currencies"
     
-    func fetchCurrencies() async {
+    
+    @MainActor func fetchCurrencies() async {
         currencies = []
         do {
             let currenciesData = try await NetworkManagerAsync.shared.fetchCurrencies()

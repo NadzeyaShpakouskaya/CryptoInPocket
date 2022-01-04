@@ -7,7 +7,7 @@
 
 import Foundation
 
-@MainActor class MarketsForCurrencySectionViewModel: ObservableObject {
+class MarketsForCurrencySectionViewModel: ObservableObject {
     @Published var markets: [MarketForCurrencyDetailedViewModel] = []
     @Published var isMarketsSectionHidden: Bool  {
         didSet {
@@ -23,7 +23,7 @@ import Foundation
         isMarketsSectionHidden.toggle()
     }
     
-    func fetchMarketsForCurrency(with id: String) async {
+    @MainActor func fetchMarketsForCurrency(with id: String) async {
         markets = []
         do {
             let marketsData = try await NetworkManagerAsync.shared.fetchMarketsForCurrency(id: id)
