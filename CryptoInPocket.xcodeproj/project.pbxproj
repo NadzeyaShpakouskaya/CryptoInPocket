@@ -29,6 +29,8 @@
 		FDADC2A22771E75600938E57 /* FavoriteButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDADC2A12771E75600938E57 /* FavoriteButtonView.swift */; };
 		FDAEA25F2782E070005AAD0E /* FavoritePopUpCurrencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDAEA25E2782E070005AAD0E /* FavoritePopUpCurrencyView.swift */; };
 		FDAEA2612782E085005AAD0E /* FavoritePopUpExchangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDAEA2602782E085005AAD0E /* FavoritePopUpExchangeView.swift */; };
+		FDDA140B278580B3008E5C94 /* FavoriteRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDA140A278580B2008E5C94 /* FavoriteRowView.swift */; };
+		FDDA140D2785B14B008E5C94 /* FavoritePopUpExchangeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDA140C2785B14B008E5C94 /* FavoritePopUpExchangeViewModel.swift */; };
 		FDDBB8EC276A39E400B17DE0 /* CryptoInPocketApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDBB8EB276A39E400B17DE0 /* CryptoInPocketApp.swift */; };
 		FDDBB8F0276A39E700B17DE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FDDBB8EF276A39E700B17DE0 /* Assets.xcassets */; };
 		FDDBB8F3276A39E700B17DE0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FDDBB8F2276A39E700B17DE0 /* Preview Assets.xcassets */; };
@@ -87,6 +89,8 @@
 		FDADC2A12771E75600938E57 /* FavoriteButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteButtonView.swift; sourceTree = "<group>"; };
 		FDAEA25E2782E070005AAD0E /* FavoritePopUpCurrencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePopUpCurrencyView.swift; sourceTree = "<group>"; };
 		FDAEA2602782E085005AAD0E /* FavoritePopUpExchangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePopUpExchangeView.swift; sourceTree = "<group>"; };
+		FDDA140A278580B2008E5C94 /* FavoriteRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRowView.swift; sourceTree = "<group>"; };
+		FDDA140C2785B14B008E5C94 /* FavoritePopUpExchangeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePopUpExchangeViewModel.swift; sourceTree = "<group>"; };
 		FDDBB8E8276A39E400B17DE0 /* CryptoInPocket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoInPocket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDDBB8EB276A39E400B17DE0 /* CryptoInPocketApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoInPocketApp.swift; sourceTree = "<group>"; };
 		FDDBB8EF276A39E700B17DE0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -201,10 +205,12 @@
 			isa = PBXGroup;
 			children = (
 				FDADC2A12771E75600938E57 /* FavoriteButtonView.swift */,
+				FDDA140A278580B2008E5C94 /* FavoriteRowView.swift */,
 				FDDBB91B276A3A4E00B17DE0 /* FavoritesView.swift */,
 				FDADC29B276C68E700938E57 /* FavoritesViewModel.swift */,
 				FDAEA25E2782E070005AAD0E /* FavoritePopUpCurrencyView.swift */,
 				FDAEA2602782E085005AAD0E /* FavoritePopUpExchangeView.swift */,
+				FDDA140C2785B14B008E5C94 /* FavoritePopUpExchangeViewModel.swift */,
 			);
 			path = Favorites;
 			sourceTree = "<group>";
@@ -469,8 +475,10 @@
 				FDDBB91C276A3A4E00B17DE0 /* FavoritesView.swift in Sources */,
 				FDAEA25F2782E070005AAD0E /* FavoritePopUpCurrencyView.swift in Sources */,
 				FDDBB92C276A3D6700B17DE0 /* NetworkManagerAsync.swift in Sources */,
+				FDDA140D2785B14B008E5C94 /* FavoritePopUpExchangeViewModel.swift in Sources */,
 				FDDBB923276A3B9B00B17DE0 /* Exchange.swift in Sources */,
 				FDADC28E276B5C8200938E57 /* MarketsForCurrencySectionView.swift in Sources */,
+				FDDA140B278580B3008E5C94 /* FavoriteRowView.swift in Sources */,
 				FDADC287276B1E5C00938E57 /* MarketForExchangeDetailedViewModel.swift in Sources */,
 				FDADC29C276C68E700938E57 /* FavoritesViewModel.swift in Sources */,
 				FDDBB916276A3A1100B17DE0 /* MainView.swift in Sources */,

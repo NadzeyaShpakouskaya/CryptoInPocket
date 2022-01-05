@@ -20,7 +20,7 @@ struct MainView: View {
                     Image(systemName: "bitcoinsign.square.fill")
                     Text("Currencies")
                 }
-            FavoritesView(viewModel: FavoritesViewModel())
+            FavoritesView()
                 .tabItem {
                     Image(systemName: "heart.circle.fill")
                     Text("My favorite")

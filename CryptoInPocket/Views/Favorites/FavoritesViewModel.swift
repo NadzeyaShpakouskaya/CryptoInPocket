@@ -10,16 +10,16 @@ import Foundation
 class FavoritesViewModel: ObservableObject {
     
     var favoriteExchangesNames: [String] {
-        LocalDataStorageManager.shared.loadData().exchangesNames
+        LocalDataStorageManager.shared.fetchFavoriteExchanges()
     }
     var favoriteCurrenciesNames: [String] {
-        LocalDataStorageManager.shared.loadData().currenciesNames
+        LocalDataStorageManager.shared.fetchFavoriteCurrencies()
     }
 
     
-    @Published var selectedExchange: DetailedExchangeViewModel?
+    @Published var selectedExchange: FavoritePopUpExchangeViewModel?
     @Published var selectedCurrency: DetailedCurrencyViewModel?
-    
+
     var mainHeader: String {
         "Favorites"
     }
@@ -47,7 +47,7 @@ class FavoritesViewModel: ObservableObject {
         selectedExchange = nil
         do {
             let exchange = try await NetworkManagerAsync.shared.fetchExchangeBy(id: id)
-            selectedExchange = DetailedExchangeViewModel(exchange: exchange)
+            selectedExchange = FavoritePopUpExchangeViewModel(exchange: exchange)
         } catch {
             print(error.localizedDescription)
         }

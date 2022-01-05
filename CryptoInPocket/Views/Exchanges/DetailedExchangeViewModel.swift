@@ -18,7 +18,7 @@ class DetailedExchangeViewModel: ObservableObject {
         }
     }
     
-    
+
     var exchangeID: String {
         exchange.exchangeId
     }
@@ -45,7 +45,7 @@ class DetailedExchangeViewModel: ObservableObject {
             ? exchange.website!
             : "https://google.com")!
     }
- 
+    
     private var exchange: Exchange
     
     init(exchange: Exchange){

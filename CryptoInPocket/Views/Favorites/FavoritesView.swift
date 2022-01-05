@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FavoritesView: View {
-    @ObservedObject var viewModel: FavoritesViewModel
+    @ObservedObject var viewModel: FavoritesViewModel = FavoritesViewModel()
     
     @State private var showCurrencyPopover: Bool = false
     @State private var showExchangePopover: Bool = false
@@ -19,7 +19,7 @@ struct FavoritesView: View {
                 List{
                     Section(header: Text(viewModel.exchangesSectionHeader)) {
                         ForEach(viewModel.favoriteExchangesNames, id: \.self) { title in
-                            RowView(title: title)
+                            FavoriteRowView(title: title, color: .indigo)
                                 .onTapGesture {
                                     Task{
                                         await viewModel.fetchExchangeWith(id: title)
@@ -31,7 +31,7 @@ struct FavoritesView: View {
                     
                     Section(header: Text(viewModel.currenciesSectionHeader)) {
                         ForEach(viewModel.favoriteCurrenciesNames, id: \.self) { title in
-                            RowView(title: title)
+                            FavoriteRowView(title: title, color: .orange)
                                 .onTapGesture {
                                     Task{
                                         await viewModel.fetchCurrencyWith(id: title)
@@ -60,20 +60,6 @@ struct FavoritesView: View {
             .navigationTitle(viewModel.mainHeader)
             .navigationBarTitleDisplayMode(/*@START_MENU_TOKEN@*/.inline/*@END_MENU_TOKEN@*/)
         }
-    }
-}
-
-struct RowView: View {
-    let title: String
-    
-    var body: some View{
-        HStack{
-            Text(title).multilineTextAlignment(.leading)
-            Spacer()
-            Image(systemName: "info").foregroundColor(.orange)
-            
-        }.contentShape(Rectangle())
-        
     }
 }
 

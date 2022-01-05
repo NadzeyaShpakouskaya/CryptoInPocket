@@ -13,13 +13,20 @@ class LocalDataStorageManager {
     static let shared = LocalDataStorageManager()
     
     private init() {}
-    
+   
     func loadData() -> UserData {
         guard let data = try? JSONDecoder().decode(
                     UserData.self,
                     from: userData ?? Data()
         ) else { return UserData() }
         return data
+    }
+    func fetchFavoriteCurrencies() -> [String] {
+        loadData().currenciesNames
+    }
+    
+    func fetchFavoriteExchanges() -> [String] {
+        loadData().exchangesNames
     }
     
     func saveData(_ data: UserData) {

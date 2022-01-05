@@ -7,12 +7,12 @@
 
 import Foundation
 
-@MainActor class ExchangesViewModel: ObservableObject {
+class ExchangesViewModel: ObservableObject {
     @Published var exchanges: [DetailedExchangeViewModel] = []
     
     let header = "Exchanges"
     
-    func fetchExchanges() async {
+     @MainActor func fetchExchanges() async {
         exchanges = []
         do {
             let exchangesData = try await NetworkManagerAsync.shared.fetchExchanges()

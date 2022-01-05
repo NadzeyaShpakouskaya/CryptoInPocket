@@ -12,26 +12,24 @@ struct FavoritePopUpCurrencyView: View {
     @Binding var showPopUp: Bool
     
     var body: some View {
-    ZStack{
-        Color(UIColor.systemGray6).frame(height: UIScreen.main.bounds.height)
+        ZStack{
+            Color(UIColor.systemGray6).frame(height: UIScreen.main.bounds.height)
             VStack{
-                HStack{
+                VStack{
+                    generalInfo
                     Spacer()
-                    Button(action: { showPopUp.toggle()}) {
-                        Image(systemName: "xmark")
-                    }
-                }.foregroundColor(.gray)
-                generalInfo
+                    priceChangesView
+                }
+                .padding()
+                .frame(height: 200)
+                .background(Color.orange.opacity(0.3))
+                .clipShape(RoundedRectangle(cornerRadius: 12))
+                
                 Spacer()
-                priceChangesView
+                
             }
-            
-            .padding()
-            .frame(height: 200)
-            .background(Color.orange.opacity(0.3))
-            
-            .clipShape(RoundedRectangle(cornerRadius: 12))
-    }.padding(.horizontal)
+            .padding(EdgeInsets(top: 100, leading: 0, bottom: 0, trailing: 0))
+        }.padding(.horizontal)
         
     }
 }
@@ -39,10 +37,18 @@ struct FavoritePopUpCurrencyView: View {
 extension FavoritePopUpCurrencyView {
     private var generalInfo: some View {
         VStack{
-            Text(detailedViewModel.currencyDetailed)
-                .font(.title)
-                .fontWeight(.heavy)
-                .foregroundColor(.orange)
+            HStack{
+                Spacer()
+                Text(detailedViewModel.currencyDetailed)
+                    .font(.title)
+                    .fontWeight(.heavy)
+                    .foregroundColor(.orange)
+                Spacer()
+                Button(action: { showPopUp.toggle()}) {
+                    Image(systemName: "xmark")
+                        .foregroundColor(.gray)
+                }
+            }
             Spacer()
             Text(detailedViewModel.priceInfo)
                 .font(.title3)
