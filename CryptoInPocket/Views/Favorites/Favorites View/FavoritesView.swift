@@ -26,6 +26,8 @@ struct FavoritesView: View {
                                     }
                                     showExchangePopover.toggle()
                                 }
+                        }.onDelete{ offsetIndex in
+                            viewModel.deleteExchangeFromFavorites(offsetIndex)
                         }
                     }
                     
@@ -38,6 +40,8 @@ struct FavoritesView: View {
                                     }
                                     showCurrencyPopover.toggle()
                                 }
+                        }.onDelete{ offsetIndex in
+                            viewModel.deleteCurrencyFromFavorites(offsetIndex)
                         }
                     }
                 }
@@ -59,6 +63,8 @@ struct FavoritesView: View {
             }
             .navigationTitle(viewModel.mainHeader)
             .navigationBarTitleDisplayMode(/*@START_MENU_TOKEN@*/.inline/*@END_MENU_TOKEN@*/)
+        }.onAppear {
+            viewModel.loadFavoritesInfo()
         }
     }
 }

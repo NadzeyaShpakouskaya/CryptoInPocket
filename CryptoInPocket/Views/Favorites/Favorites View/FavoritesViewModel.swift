@@ -9,17 +9,17 @@ import Foundation
 
 class FavoritesViewModel: ObservableObject {
     
-    var favoriteExchangesNames: [String] {
-        LocalDataStorageManager.shared.fetchFavoriteExchanges()
-    }
-    var favoriteCurrenciesNames: [String] {
-        LocalDataStorageManager.shared.fetchFavoriteCurrencies()
-    }
-
+    @Published  var favoriteExchangesNames: [String]  = []
+    @Published var favoriteCurrenciesNames: [String] = []
+    
     
     @Published var selectedExchange: FavoritePopUpExchangeViewModel?
     @Published var selectedCurrency: FavoritePopUpCurrencyViewModel?
-
+    
+    init() {
+        loadFavoritesInfo()
+    }
+    
     var mainHeader: String {
         "Favorites"
     }
@@ -33,7 +33,9 @@ class FavoritesViewModel: ObservableObject {
     }
     
     
-    @MainActor func fetchCurrencyWith(id: String) async {
+    
+    @MainActor
+    func fetchCurrencyWith(id: String) async {
         selectedCurrency = nil
         do {
             let currency = try await NetworkManagerAsync.shared.fetchCurrencyBy(id: id)
@@ -43,7 +45,8 @@ class FavoritesViewModel: ObservableObject {
         }
     }
     
-    @MainActor func fetchExchangeWith(id: String) async {
+    @MainActor
+    func fetchExchangeWith(id: String) async {
         selectedExchange = nil
         do {
             let exchange = try await NetworkManagerAsync.shared.fetchExchangeBy(id: id)
@@ -52,4 +55,21 @@ class FavoritesViewModel: ObservableObject {
             print(error.localizedDescription)
         }
     }
+    
+    func deleteCurrencyFromFavorites(_ offsetIndex: IndexSet ) {
+        LocalDataStorageManager.shared.deleteCurrencyFromFavorite(offsetIndex)
+        favoriteCurrenciesNames = LocalDataStorageManager.shared.fetchFavoriteCurrencies()
+    }
+    
+    func deleteExchangeFromFavorites(_ offsetIndex: IndexSet ) {
+        LocalDataStorageManager.shared.deleteExchangeFromFavorite(offsetIndex)
+        favoriteExchangesNames = LocalDataStorageManager.shared.fetchFavoriteExchanges()
+    }
+    
+    func loadFavoritesInfo() {
+        favoriteExchangesNames = LocalDataStorageManager.shared.fetchFavoriteExchanges()
+        favoriteCurrenciesNames = LocalDataStorageManager.shared.fetchFavoriteCurrencies()
+    }
+    
+    
 }

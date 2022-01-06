@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-class LocalDataStorageManager {
-    @AppStorage("userData") private var userData: Data?
+class LocalDataStorageManager: ObservableObject {
+    @AppStorage("userData") private var userData: Data? 
     
     static let shared = LocalDataStorageManager()
     
