@@ -18,7 +18,7 @@ class FavoritesViewModel: ObservableObject {
 
     
     @Published var selectedExchange: FavoritePopUpExchangeViewModel?
-    @Published var selectedCurrency: DetailedCurrencyViewModel?
+    @Published var selectedCurrency: FavoritePopUpCurrencyViewModel?
 
     var mainHeader: String {
         "Favorites"
@@ -37,7 +37,7 @@ class FavoritesViewModel: ObservableObject {
         selectedCurrency = nil
         do {
             let currency = try await NetworkManagerAsync.shared.fetchCurrencyBy(id: id)
-            selectedCurrency = DetailedCurrencyViewModel(currency)
+            selectedCurrency = FavoritePopUpCurrencyViewModel(currency)
         } catch {
             print(error.localizedDescription)
         }

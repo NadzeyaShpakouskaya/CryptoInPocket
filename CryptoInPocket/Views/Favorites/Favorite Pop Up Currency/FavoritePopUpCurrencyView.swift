@@ -8,27 +8,30 @@
 import SwiftUI
 
 struct FavoritePopUpCurrencyView: View {
-    @ObservedObject var detailedViewModel: DetailedCurrencyViewModel
+    @ObservedObject var detailedViewModel: FavoritePopUpCurrencyViewModel
     @Binding var showPopUp: Bool
     
     var body: some View {
         ZStack{
-            Color(UIColor.systemGray6).frame(height: UIScreen.main.bounds.height)
+            Color(UIColor.systemGray6)
             VStack{
-                VStack{
+                VStack(spacing: 16){
                     generalInfo
-                    Spacer()
-                    priceChangesView
+                    priceChangesView.frame(alignment: .leading)
+                    markets
                 }
+                
                 .padding()
-                .frame(height: 200)
+                
                 .background(Color.orange.opacity(0.3))
                 .clipShape(RoundedRectangle(cornerRadius: 12))
                 
                 Spacer()
                 
             }
-            .padding(EdgeInsets(top: 100, leading: 0, bottom: 0, trailing: 0))
+            .task {
+                await detailedViewModel.fetchFavoriteMarkets()
+            }
         }.padding(.horizontal)
         
     }
@@ -36,7 +39,7 @@ struct FavoritePopUpCurrencyView: View {
 
 extension FavoritePopUpCurrencyView {
     private var generalInfo: some View {
-        VStack{
+        VStack(spacing: 8){
             HStack{
                 Spacer()
                 Text(detailedViewModel.currencyDetailed)
@@ -49,15 +52,19 @@ extension FavoritePopUpCurrencyView {
                         .foregroundColor(.gray)
                 }
             }
-            Spacer()
+            HStack{
             Text(detailedViewModel.priceInfo)
                 .font(.title3)
                 .fontWeight(.heavy)
-            Text(detailedViewModel.tradingVolumeInfo)
+                Spacer()
+                Text(detailedViewModel.tradingVolumeInfo)
+                
+            }
         }
     }
     
     private var priceChangesView: some View {
+        HStack{
         VStack(alignment: .leading) {
             PercentageChangesHorizontalView(
                 title: detailedViewModel.lastHourChangesTitle,
@@ -76,10 +83,31 @@ extension FavoritePopUpCurrencyView {
                 value: detailedViewModel.lastWeekChangesValue,
                 isIncreased: detailedViewModel.isLastWeekValueIncreased)
         }
+            Spacer()
+        }
+    }
+    
+    private var markets: some View {
+        VStack{
+            Text(detailedViewModel.titleForExchanges)
+                .fontWeight(.heavy)
+                .font(.title3)
+                .foregroundColor(.orange)
+            VStack{
+                ScrollView{
+                    ForEach(detailedViewModel.favoriteVMExchanges, id: \.id) { item in
+                        MarketForCurrencyDetailedView(detailedVM: item)
+                            .padding(8)
+                    }
+                    
+                }
+            }
+            
+        }
     }
 }
 struct FavoritePopUpCurrencyView_Previews: PreviewProvider {
     static var previews: some View {
-        FavoritePopUpCurrencyView(detailedViewModel: DetailedCurrencyViewModel(Currency.getTestCurrency()), showPopUp: .constant(false))
+        FavoritePopUpCurrencyView(detailedViewModel: FavoritePopUpCurrencyViewModel(Currency.getTestCurrency()), showPopUp: .constant(false))
     }
 }
