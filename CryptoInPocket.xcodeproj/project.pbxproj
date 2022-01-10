@@ -32,6 +32,9 @@
 		FDDA140B278580B3008E5C94 /* FavoriteRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDA140A278580B2008E5C94 /* FavoriteRowView.swift */; };
 		FDDA140D2785B14B008E5C94 /* FavoritePopUpExchangeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDA140C2785B14B008E5C94 /* FavoritePopUpExchangeViewModel.swift */; };
 		FDDA14112786B1AA008E5C94 /* FavoritePopUpCurrencyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDA14102786B1AA008E5C94 /* FavoritePopUpCurrencyViewModel.swift */; };
+		FDDA1416278BF070008E5C94 /* Searching.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDA1415278BF070008E5C94 /* Searching.swift */; };
+		FDDA1418278BF130008E5C94 /* SearchingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDA1417278BF130008E5C94 /* SearchingViewModel.swift */; };
+		FDDA141A278BF347008E5C94 /* AssetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDA1419278BF347008E5C94 /* AssetViewModel.swift */; };
 		FDDBB8EC276A39E400B17DE0 /* CryptoInPocketApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDBB8EB276A39E400B17DE0 /* CryptoInPocketApp.swift */; };
 		FDDBB8F0276A39E700B17DE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FDDBB8EF276A39E700B17DE0 /* Assets.xcassets */; };
 		FDDBB8F3276A39E700B17DE0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FDDBB8F2276A39E700B17DE0 /* Preview Assets.xcassets */; };
@@ -93,6 +96,9 @@
 		FDDA140A278580B2008E5C94 /* FavoriteRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRowView.swift; sourceTree = "<group>"; };
 		FDDA140C2785B14B008E5C94 /* FavoritePopUpExchangeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePopUpExchangeViewModel.swift; sourceTree = "<group>"; };
 		FDDA14102786B1AA008E5C94 /* FavoritePopUpCurrencyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePopUpCurrencyViewModel.swift; sourceTree = "<group>"; };
+		FDDA1415278BF070008E5C94 /* Searching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Searching.swift; sourceTree = "<group>"; };
+		FDDA1417278BF130008E5C94 /* SearchingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchingViewModel.swift; sourceTree = "<group>"; };
+		FDDA1419278BF347008E5C94 /* AssetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetViewModel.swift; sourceTree = "<group>"; };
 		FDDBB8E8276A39E400B17DE0 /* CryptoInPocket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoInPocket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDDBB8EB276A39E400B17DE0 /* CryptoInPocketApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoInPocketApp.swift; sourceTree = "<group>"; };
 		FDDBB8EF276A39E700B17DE0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -242,6 +248,16 @@
 			path = "Favorite Pop Up Currency";
 			sourceTree = "<group>";
 		};
+		FDDA141B278BF54D008E5C94 /* Searching */ = {
+			isa = PBXGroup;
+			children = (
+				FDDA1415278BF070008E5C94 /* Searching.swift */,
+				FDDA1417278BF130008E5C94 /* SearchingViewModel.swift */,
+				FDDA1419278BF347008E5C94 /* AssetViewModel.swift */,
+			);
+			path = Searching;
+			sourceTree = "<group>";
+		};
 		FDDBB8DF276A39E400B17DE0 = {
 			isa = PBXGroup;
 			children = (
@@ -305,6 +321,7 @@
 			isa = PBXGroup;
 			children = (
 				FDDBB915276A3A1100B17DE0 /* MainView.swift */,
+				FDDA141B278BF54D008E5C94 /* Searching */,
 				FDADC275276AF22100938E57 /* Exchanges */,
 				FDADC278276AF67600938E57 /* Currencies */,
 				FDADC29A276C68BE00938E57 /* Favorites */,
@@ -485,6 +502,7 @@
 				FDDBB925276A3BCB00B17DE0 /* Currency.swift in Sources */,
 				FDADC297276C63FE00938E57 /* SectionHeaderView.swift in Sources */,
 				FDADC26F276A40D100938E57 /* DetailedExchangeViewModel.swift in Sources */,
+				FDDA141A278BF347008E5C94 /* AssetViewModel.swift in Sources */,
 				FDDA14112786B1AA008E5C94 /* FavoritePopUpCurrencyViewModel.swift in Sources */,
 				FDADC2A22771E75600938E57 /* FavoriteButtonView.swift in Sources */,
 				FDADC271276A444700938E57 /* Double+Extension.swift in Sources */,
@@ -492,6 +510,7 @@
 				FDADC277276AF26700938E57 /* DetailedExchangeView.swift in Sources */,
 				FDDBB92F276A3EFA00B17DE0 /* ExchangesViewModel.swift in Sources */,
 				FDADC28B276B2A4900938E57 /* MarketForExchangeDetailedView.swift in Sources */,
+				FDDA1416278BF070008E5C94 /* Searching.swift in Sources */,
 				FDDBB91F276A3AF300B17DE0 /* UserData.swift in Sources */,
 				FDAEA2612782E085005AAD0E /* FavoritePopUpExchangeView.swift in Sources */,
 				FDDBB91A276A3A3C00B17DE0 /* CurrenciesView.swift in Sources */,
@@ -511,6 +530,7 @@
 				FDADC29C276C68E700938E57 /* FavoritesViewModel.swift in Sources */,
 				FDDBB916276A3A1100B17DE0 /* MainView.swift in Sources */,
 				FDADC29E276C695D00938E57 /* LocalDataStorageManager.swift in Sources */,
+				FDDA1418278BF130008E5C94 /* SearchingViewModel.swift in Sources */,
 				FDADC282276B1DD400938E57 /* MarketsForExchangeSectionView.swift in Sources */,
 				FDDBB8EC276A39E400B17DE0 /* CryptoInPocketApp.swift in Sources */,
 				FDADC27E276AFD2C00938E57 /* DetailedCurrencyView.swift in Sources */,

@@ -40,7 +40,7 @@ struct FavoritesView: View {
                                     }
                                     showCurrencyPopover.toggle()
                                 }
-                        }.onDelete{ offsetIndex in
+                        }.onDelete { offsetIndex in
                             viewModel.deleteCurrencyFromFavorites(offsetIndex)
                         }
                     }

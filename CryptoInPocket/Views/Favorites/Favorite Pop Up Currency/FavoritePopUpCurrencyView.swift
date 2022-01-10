@@ -17,7 +17,8 @@ struct FavoritePopUpCurrencyView: View {
             VStack{
                 VStack(spacing: 16){
                     generalInfo
-                    priceChangesView.frame(alignment: .leading)
+                    priceChangesView
+                        .frame(alignment: .leading)
                     markets
                 }
                 
@@ -108,6 +109,9 @@ extension FavoritePopUpCurrencyView {
 }
 struct FavoritePopUpCurrencyView_Previews: PreviewProvider {
     static var previews: some View {
-        FavoritePopUpCurrencyView(detailedViewModel: FavoritePopUpCurrencyViewModel(Currency.getTestCurrency()), showPopUp: .constant(false))
+        FavoritePopUpCurrencyView(
+            detailedViewModel: FavoritePopUpCurrencyViewModel(Currency.getTestCurrency()),
+            showPopUp: .constant(false)
+        )
     }
 }

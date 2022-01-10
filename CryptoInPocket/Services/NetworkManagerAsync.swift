@@ -73,6 +73,17 @@ class NetworkManagerAsync {
         return values.markets
     }
     
+    func fetchAssetsData() async throws -> [AssetData] {
+        let url = Route.baseURL.rawValue + Route.currenciesNamesList.rawValue
+        
+        guard let values = try? await fetchData(
+            dataType: AssetsData.self,
+            from: url,
+            convertFromSnake: false
+        ) else { throw NetworkError.noData}
+        return values.assets
+    }
+    
 }
 
 //MARK: - Privates methods

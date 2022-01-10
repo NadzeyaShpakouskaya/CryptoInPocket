@@ -12,7 +12,6 @@ class FavoritesViewModel: ObservableObject {
     @Published  var favoriteExchangesNames: [String]  = []
     @Published var favoriteCurrenciesNames: [String] = []
     
-    
     @Published var selectedExchange: FavoritePopUpExchangeViewModel?
     @Published var selectedCurrency: FavoritePopUpCurrencyViewModel?
     

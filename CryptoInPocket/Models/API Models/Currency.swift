@@ -104,4 +104,18 @@ struct RemoteCurrency: Codable {
     let asset: Currency
 }
 
+struct AssetsData: Codable {
+    let assets: [AssetData]
+}
+
+struct AssetData: Codable {
+    let assetId: String
+    let name: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case assetId = "asset_id"
+        case name
+    }
+}
+
 
