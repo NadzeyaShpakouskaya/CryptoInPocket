@@ -17,34 +17,40 @@ struct Searching: View {
             ZStack{
                 List {
                     ForEach(searchResults, id: \.id) { item in
-                        NavigationLink(destination:
-                                        DetailedCurrencyView(detailedViewModel: viewModel.selectedCurrency ?? DetailedCurrencyViewModel(Currency.getTestCurrency()))){
-                            FavoriteRowView(title: item.info, color: .gray)
-                        }
+                        FavoriteRowView(title: item.info, color: .gray)
                         .onTapGesture {
                             Task {
                                 await viewModel.fetchCurrencyWith(id: item.id)
                             }
                             showDetailed.toggle()
                         }
-                        
-                        
                     }
                 }
                 .searchable(
                     text: $searchText,
                     placement: .navigationBarDrawer(displayMode: .always)
                 )
+                if showDetailed {
+                    if let selected = viewModel.selectedCurrency{
+                        withAnimation {
+                            SmallPopUpCurrencyView(detailedViewModel: selected, showPopUp: $showDetailed)
+                                .padding()
+                                .transition(.scale)
+                                .offset(y: -100)
+                                .animation(.spring(), value: showDetailed)
+                        }
+                   
+           
+                        
+                    }
+                }
             }
             .navigationTitle("Searching")
             .task {
                 await viewModel.fetchData()
             }
-            .sheet(isPresented: $showDetailed) {
-                if let selected = viewModel.selectedCurrency {
-                    DetailedCurrencyView(detailedViewModel:selected)
-                }
-            }
+ 
+            
         }
     }
     

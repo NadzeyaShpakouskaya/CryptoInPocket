@@ -7,7 +7,11 @@
 
 import Foundation
 
-class DetailedCurrencyViewModel: ObservableObject {
+class DetailedCurrencyViewModel: ObservableObject, Equatable {
+    static func == (lhs: DetailedCurrencyViewModel, rhs: DetailedCurrencyViewModel) -> Bool {
+        lhs.currencyId == rhs.currencyId
+    }
+    
     
     @Published var isFavorite: Bool {
         didSet {

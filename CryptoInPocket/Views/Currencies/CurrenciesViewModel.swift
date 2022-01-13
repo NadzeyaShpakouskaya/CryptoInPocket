@@ -7,21 +7,45 @@
 
 import Foundation
 class CurrenciesViewModel: ObservableObject {
-    @Published var currencies: [DetailedCurrencyViewModel] = []
+    @Published var loadedCurrencies: [DetailedCurrencyViewModel] = []
+    
+    @Published var isLoading = false
     
     let header = "Currencies"
     
+    private let fetchSize = 20
     
-    @MainActor func fetchCurrencies() async {
-        currencies = []
+    private(set) var hasReachedEnd = false
+    private(set) var lastItem = 0
+    
+    var shouldNextPageLoad: Bool {
+        !hasReachedEnd
+    }
+    
+    var lastFetched: DetailedCurrencyViewModel? {
+        loadedCurrencies.last
+    }
+    
+    @MainActor func fetchCurrenciesByPage() async {
+       isLoading = true
+        let  item = self.lastItem
         do {
-            let currenciesData = try await NetworkManagerAsync.shared.fetchCurrencies()
+            let currenciesData = try await NetworkManagerAsync.shared.fetchCurrenciesByPage(itemPerPage: fetchSize, lastFetched: item)
+            hasReachedEnd = currenciesData.count < fetchSize
             currenciesData.forEach { currency in
                 let currencyVM = DetailedCurrencyViewModel(currency)
-                currencies.append(currencyVM)
+                loadedCurrencies.append(currencyVM)
             }
-        } catch  {
+
+            isLoading = false
+            lastItem += fetchSize
+        } catch {
             print(error.localizedDescription)
         }
+    }
+    
+    @MainActor func loadMoreCurrencies() async {
+        guard shouldNextPageLoad else { return }
+        await fetchCurrenciesByPage()
     }
 }

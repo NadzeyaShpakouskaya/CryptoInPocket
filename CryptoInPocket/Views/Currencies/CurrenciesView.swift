@@ -12,17 +12,43 @@ struct CurrenciesView: View {
     
     var body: some View {
         NavigationView {
-            List(viewModel.currencies, id: \.currencyId) { currencyDetailsVM in
-                NavigationLink(destination: DetailedCurrencyView(detailedViewModel: currencyDetailsVM)) {
-                    HStack{
-                        Text(currencyDetailsVM.currencyId)
-                    }
+            List(viewModel.loadedCurrencies, id: \.currencyId) { currencyDetailsVM in
+                if currencyDetailsVM == viewModel.lastFetched {
+                    CurrencyRow(currencyDetailsVM: currencyDetailsVM)
+                        .task { await viewModel.loadMoreCurrencies() }
+                    loadingView
+                } else {
+                    CurrencyRow(currencyDetailsVM: currencyDetailsVM)
                 }
             }
             .navigationTitle(viewModel.header)
             .navigationBarTitleDisplayMode(/*@START_MENU_TOKEN@*/.inline/*@END_MENU_TOKEN@*/)
             .task {
-                await viewModel.fetchCurrencies()
+                await viewModel.fetchCurrenciesByPage()
+            }
+        }
+    }
+    
+    private var loadingView: some View {
+        HStack{
+            Spacer()
+            ProgressView()
+            Spacer()
+        }
+    }
+
+}
+
+struct CurrencyRow: View {
+    let currencyDetailsVM: DetailedCurrencyViewModel
+    
+    var body: some View {
+        NavigationLink(destination: DetailedCurrencyView(detailedViewModel: currencyDetailsVM)) {
+            HStack{
+                showArrowUpDown(for: currencyDetailsVM.isLastDayValueIncreased)
+                Text(currencyDetailsVM.priceInfo)
+                Spacer()
+                Text(currencyDetailsVM.currencyId)
             }
         }
     }
