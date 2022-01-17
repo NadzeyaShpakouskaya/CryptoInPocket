@@ -36,8 +36,18 @@ class DetailedCurrencyViewModel: ObservableObject, Equatable {
         "\(currencyName) (\(currencyId))"
     }
     
+    
+    var description: String {
+        currency.description ?? ""
+    }
+    
+    
     var priceInfo: String {
         "Price: $ \(Double.formatNumber(currency.price ?? 0))"
+    }
+    
+    var price: String {
+        "$ \(Double.formatNumber(currency.price ?? 0))"
     }
     
     var tradingVolumeInfo: String {

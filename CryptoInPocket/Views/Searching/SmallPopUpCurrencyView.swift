@@ -14,60 +14,66 @@ struct SmallPopUpCurrencyView: View {
     var body: some View {
         ZStack{
             Color(UIColor.systemGray5)
-        
-        
+            
+            
             VStack(spacing: 16) {
-            HStack{
-                FavoriteButtonView(
-                    color: .orange,
-                    isFavorite: detailedViewModel.isFavorite,
-                    action: detailedViewModel.favoriteButtonPressed
-                )
-                Spacer()
-                Text(detailedViewModel.currencyDetailed)
-                    .bold()
-                    .font(.title)
-                Spacer()
-                Button(action: { showPopUp.toggle()}) {
-                    Image(systemName: "xmark")
-                        .foregroundColor(.gray)
+                HStack{
+                    FavoriteButtonView(
+                        color: .orange,
+                        isFavorite: detailedViewModel.isFavorite,
+                        action: detailedViewModel.favoriteButtonPressed
+                    )
+                    Spacer()
+                    Text(detailedViewModel.currencyDetailed)
+                        .bold()
+                        .font(.title)
+                    Spacer()
+                    Button(action: { showPopUp.toggle()}) {
+                        Image(systemName: "xmark")
+                            .foregroundColor(.gray)
+                        
+                    }
+                }.foregroundColor(.orange)
+                
+                HStack {
+                    Text(detailedViewModel.priceInfo)
+                    Spacer()
+                    Text(detailedViewModel.tradingVolumeInfo)
                     
                 }
-            }.foregroundColor(.orange)
-            HStack {
-                Text(detailedViewModel.priceInfo)
-                Spacer()
-                Text(detailedViewModel.tradingVolumeInfo)
+                HStack{
+                    PercentageChangesView(
+                        title: detailedViewModel.lastHourChangesTitle,
+                        value: detailedViewModel.lastHourChangesValue,
+                        isIncreased: detailedViewModel.isLastHourValueIncreased
+                    )
+                    Spacer()
+                    PercentageChangesView(
+                        title: detailedViewModel.lastDayChangesTitle,
+                        value: detailedViewModel.lastDayChangesValue,
+                        isIncreased: detailedViewModel.isLastDayValueIncreased
+                    )
+                    Spacer()
+                    PercentageChangesView(
+                        title: detailedViewModel.lastWeekChangesTitle,
+                        value: detailedViewModel.lastWeekChangesValue,
+                        isIncreased: detailedViewModel.isLastWeekValueIncreased)
+                }
                 
-            }
-            HStack{
-                PercentageChangesView(
-                    title: detailedViewModel.lastHourChangesTitle,
-                    value: detailedViewModel.lastHourChangesValue,
-                    isIncreased: detailedViewModel.isLastHourValueIncreased
-                )
+                HStack {
+                    Text(detailedViewModel.description)
+                        .multilineTextAlignment(.leading)
+                }
                 Spacer()
-                PercentageChangesView(
-                    title: detailedViewModel.lastDayChangesTitle,
-                    value: detailedViewModel.lastDayChangesValue,
-                    isIncreased: detailedViewModel.isLastDayValueIncreased
-                )
-                Spacer()
-                PercentageChangesView(
-                    title: detailedViewModel.lastWeekChangesTitle,
-                    value: detailedViewModel.lastWeekChangesValue,
-                    isIncreased: detailedViewModel.isLastWeekValueIncreased)
-            }
+                
+            }.padding()
             
-        }.padding()
-        
-        
-      
-     
-    }
-        .frame(height: 200)
+            
+            
+            
+        }
         .clipShape(RoundedRectangle(cornerRadius: 12))
-}
+    }
 }
 
 struct SmallPopUpCurrencyView_Previews: PreviewProvider {

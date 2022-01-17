@@ -9,14 +9,14 @@ import SwiftUI
 
 struct ExchangesView: View {
     @ObservedObject var viewModel: ExchangesViewModel
-    
+
     var body: some View {
         NavigationView {
             List(viewModel.exchanges, id: \.exchangeID) { exchangeDetailsVM in
                 NavigationLink(destination:DetailedExchangeView(
                     detailedViewModel: exchangeDetailsVM,
                     textColor: .indigo,
-                    backgroundColor: Color(UIColor.systemGray6)
+                    backgroundColor: .indigo.opacity(0.3)
                 ).padding()) {
                     Text(exchangeDetailsVM.exchangeName)
                 }
@@ -26,6 +26,8 @@ struct ExchangesView: View {
             .task {
                 await viewModel.fetchExchanges()
             }
+        }.onAppear {
+            setUpNavigationBar()
         }
     }
 }

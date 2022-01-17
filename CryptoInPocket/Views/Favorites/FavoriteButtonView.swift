@@ -14,14 +14,16 @@ struct FavoriteButtonView: View {
     
     var body: some View {
         Button(action: action) {
-            Image(systemName: "heart.fill" )
-                .foregroundColor(isFavorite ? color : .gray)
-        }
+            isFavorite
+            ? Image(systemName: "heart.fill")
+            : Image(systemName: "heart" )
+        }.foregroundColor(color)
     }
 }
 
 struct FavoriteButtonView_Previews: PreviewProvider {
     static var previews: some View {
         FavoriteButtonView(color: .orange, isFavorite: true, action: {})
+        FavoriteButtonView(color: .orange, isFavorite: false, action: {})
     }
 }

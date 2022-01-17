@@ -46,9 +46,9 @@ struct CurrencyRow: View {
         NavigationLink(destination: DetailedCurrencyView(detailedViewModel: currencyDetailsVM)) {
             HStack{
                 showArrowUpDown(for: currencyDetailsVM.isLastDayValueIncreased)
-                Text(currencyDetailsVM.priceInfo)
-                Spacer()
                 Text(currencyDetailsVM.currencyId)
+                Spacer()
+                Text(currencyDetailsVM.price)
             }
         }
     }

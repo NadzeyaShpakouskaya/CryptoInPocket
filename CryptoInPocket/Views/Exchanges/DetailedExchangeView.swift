@@ -57,7 +57,7 @@ struct DetailedExchangeView_Previews: PreviewProvider {
     static var previews: some View {
         DetailedExchangeView(
             detailedViewModel: DetailedExchangeViewModel(exchange: Exchange.getTestExchange()),
-            textColor: .indigo,
-            backgroundColor: .gray)
+            textColor: .white,
+            backgroundColor: .indigo.opacity(0.7))
     }
 }

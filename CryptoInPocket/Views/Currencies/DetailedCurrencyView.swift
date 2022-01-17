@@ -18,7 +18,7 @@ struct DetailedCurrencyView: View {
                 
             }.padding()
                 .frame(height: 150)
-                .background(Color(UIColor.systemGray6))
+                .background(Color(UIColor.orange.withAlphaComponent(0.25)))
                 .clipShape(RoundedRectangle(cornerRadius: 12))
             
             Spacer()

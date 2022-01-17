@@ -21,7 +21,7 @@ class MarketForCurrencyDetailedViewModel: ObservableObject {
     }
     
     var priceInfo: String {
-        "~\(Double.formatNumber(market.priceUnconverted ?? 0))\(market.quoteAsset ?? "-")"
+        "~\(Double.formatNumber(market.priceUnconverted ?? 0)) \(market.quoteAsset ?? "-")"
     }
     
     var isPriceIncreased: Bool {

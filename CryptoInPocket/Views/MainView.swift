@@ -8,7 +8,13 @@
 import SwiftUI
 
 struct MainView: View {
+    init(){
+        setUpTabBar()
+    }
+    
     var body: some View {
+  
+        
         TabView {
             ExchangesView(viewModel: ExchangesViewModel())
                 .tabItem {
@@ -31,16 +37,7 @@ struct MainView: View {
                     Text("Search")
                 }
         }
-        .font(.headline)
-        // disable transparent toolbar in ios 15.0+
-        .onAppear {
-            if #available(iOS 15.0, *) {
-                let appearance = UITabBarAppearance()
-                UITabBar.appearance().scrollEdgeAppearance = appearance
-                
-            }
-        }
-        
+        .font(.headline)  
     }
 }
 

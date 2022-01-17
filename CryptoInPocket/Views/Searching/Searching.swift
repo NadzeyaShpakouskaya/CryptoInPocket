@@ -11,7 +11,7 @@ struct Searching: View {
     @StateObject var viewModel: SearchingViewModel = SearchingViewModel()
     @State private var searchText = ""
     @State private var showDetailed = false
-    
+
     var body: some View {
         NavigationView {
             ZStack{
@@ -31,21 +31,16 @@ struct Searching: View {
                     placement: .navigationBarDrawer(displayMode: .always)
                 )
                 if showDetailed {
-                    if let selected = viewModel.selectedCurrency{
-                        withAnimation {
+                    if let selected = viewModel.selectedCurrency {
+                    
                             SmallPopUpCurrencyView(detailedViewModel: selected, showPopUp: $showDetailed)
                                 .padding()
-                                .transition(.scale)
-                                .offset(y: -100)
-                                .animation(.spring(), value: showDetailed)
-                        }
-                   
-           
+                                .shadow(color: .gray, radius: 2)
                         
                     }
                 }
             }
-            .navigationTitle("Searching")
+            .navigationBarTitleDisplayMode(/*@START_MENU_TOKEN@*/.inline/*@END_MENU_TOKEN@*/)
             .task {
                 await viewModel.fetchData()
             }

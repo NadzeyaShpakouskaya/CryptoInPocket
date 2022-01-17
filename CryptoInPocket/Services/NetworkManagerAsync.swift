@@ -15,7 +15,7 @@ class NetworkManagerAsync {
     // Exchange's related fetching
     
     func fetchExchanges() async throws -> [Exchange] {
-        let url = createBaseURL(for: .exchangesAll)
+        let url = createBaseURL(for: .exchanges)
         guard let values = try? await fetchData(
             dataType: AllExchangesDescription.self,
             from: url,
@@ -27,7 +27,7 @@ class NetworkManagerAsync {
     
     
     func fetchExchangeBy(id: String) async throws -> Exchange {
-        let url = createBaseURL(for: .exchangesAll, with: id)
+        let url = createBaseURL(for: .exchanges, with: id)
         guard let data = try? await fetchData(
             dataType: RemoteExchange.self,
             from: url,
@@ -36,8 +36,7 @@ class NetworkManagerAsync {
     }
     
     func fetchMarketsForExchange(id: String) async throws -> [Market] {
-//        let url = Route.baseURL.rawValue + Route.exchangesAll.rawValue + "/" +  id + Route.marketsAll.rawValue
-        let url = createBaseURL(for: .exchangesAll, with: id, forMarkets: true)
+        let url = createBaseURL(for: .exchanges, with: id, forMarkets: true)
         guard let values = try? await fetchData(
             dataType: AllMarketsDescription.self,
             from: url,
@@ -47,8 +46,7 @@ class NetworkManagerAsync {
     }
     
     func fetchCurrencies() async throws -> [Currency] {
-//        let url =  Route.baseURL.rawValue + Route.currenciesAll.rawValue
-        let url = createBaseURL(for: .currenciesAll)
+        let url = createBaseURL(for: .currencies)
         guard let values = try? await fetchData(
             dataType: AllCurrenciesDescription.self,
             from: url,
@@ -57,19 +55,9 @@ class NetworkManagerAsync {
         
         return values.assets
     }
-    
-//    func fetchCurrenciesByPage(itemPerPage: Int, lastFetched: Int) async throws -> [Currency] {
-//        guard let values = try? await fetchData(
-//            dataType: AllCurrenciesDescription.self,
-//            from: Route.baseURL.rawValue + Route.currenciesAll.rawValue + "?size=" + String(itemPerPage) + "&start=" + String(lastFetched),
-//            convertFromSnake: false
-//        ) else { throw NetworkError.noData }
-//
-//        return values.assets
-//    }
-    
+
     func fetchCurrenciesByPage(itemPerPage: Int, lastFetched: Int) async throws -> [Currency] {
-        let url = createPaginationURL(for: .currenciesAll, itemPerPage: itemPerPage, lastFetched: lastFetched)
+        let url = createPaginationURL(for: .currencies, itemPerPage: itemPerPage, lastFetched: lastFetched)
         guard let values = try? await fetchData(
             dataType: AllCurrenciesDescription.self,
             from: url,
@@ -80,8 +68,7 @@ class NetworkManagerAsync {
     }
     
     func fetchCurrencyBy(id: String) async throws -> Currency {
-//        let url = Route.baseURL.rawValue + Route.currenciesAll.rawValue +  "/" +  id
-        let url = createBaseURL(for: .currenciesAll, with: id, forMarkets: false)
+        let url = createBaseURL(for: .currencies, with: id, forMarkets: false)
         guard let data = try? await fetchData(
             dataType: RemoteCurrency.self,
             from: url,
@@ -90,8 +77,7 @@ class NetworkManagerAsync {
     }
     
     func fetchMarketsForCurrency(id: String) async throws -> [Market] {
-//        let url = Route.baseURL.rawValue + Route.currenciesAll.rawValue + "/" +  id + Route.marketsAll.rawValue
-        let url = createBaseURL(for: .currenciesAll, with: id, forMarkets: true)
+        let url = createBaseURL(for: .currencies, with: id, forMarkets: true)
         guard let values = try? await fetchData(
             dataType: AllMarketsDescription.self,
             from: url,
@@ -101,8 +87,7 @@ class NetworkManagerAsync {
     }
     
     func fetchAssetsData() async throws -> [AssetData] {
-//        let url = Route.baseURL.rawValue + Route.currenciesNamesList.rawValue
-        let url = createBaseURL(for: .currenciesNamesList)
+        let url = createBaseURL(for: .currenciesFullList)
         guard let values = try? await fetchData(
             dataType: AssetsData.self,
             from: url,
@@ -110,7 +95,6 @@ class NetworkManagerAsync {
         ) else { throw NetworkError.noData}
         return values.assets
     }
-    
 }
 
 //MARK: - Privates methods
@@ -139,13 +123,12 @@ extension NetworkManagerAsync {
         var path = ""
         if let id = id {
             path = "/api" + route.rawValue + "/" + id
-            if forMarkets {
-                path += "/markets"
-            }
         } else {
            path = "/api" + route.rawValue
         }
-        
+        if forMarkets {
+            path += "/markets"
+        }
 
         var components = URLComponents()
         components.scheme = "https"
@@ -175,11 +158,11 @@ enum NetworkError: Error {
 }
 
 enum Route: String {
-    case baseURL = "https://www.cryptingup.com/api"
-    case exchangesAll = "/exchanges"
-    case marketsAll = "/markets"
-    case currenciesAll = "/assets"
-    case currenciesNamesList = "/assetsoverview"
+//    case baseURL = "https://www.cryptingup.com/api"
+    case exchanges = "/exchanges"
+//    case marketsAll = "/markets"
+    case currencies = "/assets"
+    case currenciesFullList = "/assetsoverview"
 }
 
 
