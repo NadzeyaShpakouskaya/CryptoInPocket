@@ -11,7 +11,7 @@ struct ExchangesView: View {
     @ObservedObject var viewModel: ExchangesViewModel
 
     var body: some View {
-        NavigationView {
+
             List(viewModel.exchanges, id: \.exchangeID) { exchangeDetailsVM in
                 NavigationLink(destination:DetailedExchangeView(
                     detailedViewModel: exchangeDetailsVM,
@@ -25,11 +25,11 @@ struct ExchangesView: View {
             .navigationBarTitleDisplayMode(/*@START_MENU_TOKEN@*/.inline/*@END_MENU_TOKEN@*/)
             .task {
                 await viewModel.fetchExchanges()
+            }.onAppear {
+                setUpNavigationBar()
             }
-        }.onAppear {
-            setUpNavigationBar()
         }
-    }
+    
 }
 
 struct ExchangesView_Previews: PreviewProvider {

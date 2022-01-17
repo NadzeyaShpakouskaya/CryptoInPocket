@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// The model based on API GET https://www.cryptingup.com/api/assets
 struct Currency: Codable, Hashable {
     let assetId: String
     let name: String?
@@ -18,10 +19,10 @@ struct Currency: Codable, Hashable {
     let changeLastWeek: Double?
     let status: String?
     let createdAt: String?
-    let updatedAt: String? 
+    let updatedAt: String?
 }
 
-    // MARK: - Coding Keys
+// MARK: - Coding Keys
 extension Currency {
     enum CodingKeys: String, CodingKey {
         case assetId = "asset_id"
@@ -35,6 +36,28 @@ extension Currency {
         case status
         case createdAt = "created_at"
         case updatedAt = "updated_at"
+    }
+}
+
+struct AllCurrenciesDescription: Codable {
+    let assets: [Currency]
+}
+
+struct RemoteCurrency: Codable {
+    let asset: Currency
+}
+
+struct AssetsData: Codable {
+    let assets: [AssetData]
+}
+
+struct AssetData: Codable {
+    let assetId: String
+    let name: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case assetId = "asset_id"
+        case name
     }
 }
 
@@ -99,29 +122,3 @@ extension Currency {
         ]
     }
 }
-
-struct AllCurrenciesDescription: Codable {
-    let assets: [Currency]
-}
-
-
-
-struct RemoteCurrency: Codable {
-    let asset: Currency
-}
-
-struct AssetsData: Codable {
-    let assets: [AssetData]
-}
-
-struct AssetData: Codable {
-    let assetId: String
-    let name: String?
-    
-    enum CodingKeys: String, CodingKey {
-        case assetId = "asset_id"
-        case name
-    }
-}
-
-

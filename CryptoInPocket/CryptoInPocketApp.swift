@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct CryptoInPocketApp: App {
+    let mainVM  = MainViewViewModel()
+    
     var body: some Scene {
         WindowGroup {
-            MainView()
+            MainView(viewModel: mainVM)
         }
     }
 }

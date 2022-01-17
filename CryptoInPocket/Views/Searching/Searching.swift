@@ -13,7 +13,7 @@ struct Searching: View {
     @State private var showDetailed = false
 
     var body: some View {
-        NavigationView {
+
             ZStack{
                 List {
                     ForEach(searchResults, id: \.id) { item in
@@ -46,7 +46,7 @@ struct Searching: View {
             }
  
             
-        }
+        
     }
     
     var searchResults: [AssetViewModel] {

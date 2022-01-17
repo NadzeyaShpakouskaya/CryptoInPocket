@@ -14,7 +14,7 @@ struct FavoritesView: View {
     @State private var showExchangePopover: Bool = false
     
     var body: some View {
-        NavigationView {
+  
             ZStack{
                 List{
                     Section(header: Text(viewModel.exchangesSectionHeader)) {
@@ -60,12 +60,12 @@ struct FavoritesView: View {
                     }
                 }
                 
+            }     .onAppear {
+                viewModel.loadFavoritesInfo()
             }
             .navigationTitle(viewModel.mainHeader)
             .navigationBarTitleDisplayMode(/*@START_MENU_TOKEN@*/.inline/*@END_MENU_TOKEN@*/)
-        }.onAppear {
-            viewModel.loadFavoritesInfo()
-        }
+   
     }
 }
 

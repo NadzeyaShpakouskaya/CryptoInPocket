@@ -7,12 +7,14 @@
 
 import Foundation
 
+/// The model based on API GET https://www.cryptingup.com/api/exchanges
 struct Exchange: Codable, Hashable {
     let exchangeId: String
     let name: String?
     let website: String?
     let volumeLastDay: Double?
 }
+
 // MARK: - Coding Keys
 extension Exchange {
     enum CodingKeys: String, CodingKey {
@@ -22,14 +24,14 @@ extension Exchange {
         case volumeLastDay = "volume_24h"
     }
 }
-    // MARK: - Test data
+// MARK: - Test data
 extension Exchange {
     
     static func getTestExchange() -> Exchange {
-       Exchange(exchangeId: "Test",
-                name: "Some Test Exchange",
-                website: "https://www.google.com",
-                volumeLastDay: 123456.98)
+        Exchange(exchangeId: "Test",
+                 name: "Some Test Exchange",
+                 website: "https://www.google.com",
+                 volumeLastDay: 123456.98)
     }
     
     static func getEmptyExchange() -> Exchange {
@@ -40,11 +42,11 @@ extension Exchange {
     }
     
     static func getTestExchanges() -> [Exchange] {
-       [
-        Exchange(exchangeId: "BINANCE", name: "Binance", website: "https://www.binance.com", volumeLastDay: 36052149854.27475),
-        Exchange(exchangeId: "HUOBIGLOBAL", name: "Huobi Global", website: "https://www.huobi.com", volumeLastDay: 12345357456.98),
-        Exchange(exchangeId: "COINBASE", name: "Coinbase", website: "https://pro.coinbase.com", volumeLastDay: 8058319118.753507),
-       ]
+        [
+            Exchange(exchangeId: "BINANCE", name: "Binance", website: "https://www.binance.com", volumeLastDay: 36052149854.27475),
+            Exchange(exchangeId: "HUOBIGLOBAL", name: "Huobi Global", website: "https://www.huobi.com", volumeLastDay: 12345357456.98),
+            Exchange(exchangeId: "COINBASE", name: "Coinbase", website: "https://pro.coinbase.com", volumeLastDay: 8058319118.753507),
+        ]
     }
 }
 

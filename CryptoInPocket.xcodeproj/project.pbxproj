@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FD3ED6792795522600614E5C /* MainViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3ED6782795522600614E5C /* MainViewViewModel.swift */; };
 		FDADC26F276A40D100938E57 /* DetailedExchangeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDADC26E276A40D100938E57 /* DetailedExchangeViewModel.swift */; };
 		FDADC271276A444700938E57 /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDADC270276A444700938E57 /* Double+Extension.swift */; };
 		FDADC273276A446C00938E57 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDADC272276A446C00938E57 /* View+Extension.swift */; };
@@ -72,6 +73,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FD3ED6782795522600614E5C /* MainViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewViewModel.swift; sourceTree = "<group>"; };
 		FDADC26E276A40D100938E57 /* DetailedExchangeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedExchangeViewModel.swift; sourceTree = "<group>"; };
 		FDADC270276A444700938E57 /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		FDADC272276A446C00938E57 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
@@ -147,6 +149,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FD3ED67A279555FF00614E5C /* Main Tab View */ = {
+			isa = PBXGroup;
+			children = (
+				FDDBB915276A3A1100B17DE0 /* MainView.swift */,
+				FD3ED6782795522600614E5C /* MainViewViewModel.swift */,
+			);
+			path = "Main Tab View";
+			sourceTree = "<group>";
+		};
 		FDADC274276A448300938E57 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -323,7 +334,7 @@
 		FDDBB91D276A3ACB00B17DE0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				FDDBB915276A3A1100B17DE0 /* MainView.swift */,
+				FD3ED67A279555FF00614E5C /* Main Tab View */,
 				FDDA141B278BF54D008E5C94 /* Searching */,
 				FDADC275276AF22100938E57 /* Exchanges */,
 				FDADC278276AF67600938E57 /* Currencies */,
@@ -534,6 +545,7 @@
 				FDADC29C276C68E700938E57 /* FavoritesViewModel.swift in Sources */,
 				FDDBB916276A3A1100B17DE0 /* MainView.swift in Sources */,
 				FDADC29E276C695D00938E57 /* LocalDataStorageManager.swift in Sources */,
+				FD3ED6792795522600614E5C /* MainViewViewModel.swift in Sources */,
 				FDDA1418278BF130008E5C94 /* SearchingViewModel.swift in Sources */,
 				FDADC282276B1DD400938E57 /* MarketsForExchangeSectionView.swift in Sources */,
 				FDDBB8EC276A39E400B17DE0 /* CryptoInPocketApp.swift in Sources */,

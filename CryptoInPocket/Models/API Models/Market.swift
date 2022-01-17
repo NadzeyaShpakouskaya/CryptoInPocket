@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+/// The model based on api GET https://www.cryptingup.com/api/markets
 struct Market: Codable, Hashable {    
     let exchangeId: String?
     let symbol: String?
@@ -20,9 +20,19 @@ struct Market: Codable, Hashable {
     let status: String?
     let createdAt: String?
     let updatedAt: String?
-
+    
 }
-    // MARK: - Coding Keys
+
+struct AllMarketsDescription: Codable {
+    let markets: [Market]
+    let next: String
+    
+    enum CodingKeys: String, CodingKey {
+        case markets, next
+    }
+}
+
+// MARK: - Coding Keys
 extension Market {
     
     enum CodingKeys: String, CodingKey {
@@ -41,7 +51,7 @@ extension Market {
     }
 }
 
-    // MARK: - Test Data
+// MARK: - Test Data
 extension Market {
     static func getTestMarket() -> Market {
         Market(exchangeId: "COINBASE",
@@ -61,50 +71,41 @@ extension Market {
     static func getTestMarkets() -> [Market] {
         [
             Market(exchangeId: "COINBASE",
-               symbol: "ETH-USD",
-               baseAsset: "ETH",
-               quoteAsset: "USD",
-               priceUnconverted: 2906.5150000000003,
-               price: 2906.5150000000003,
-               changeLastDay: -11.5059888808374,
-               spread: 0.018233234025285715,
-               volumeLastDay: 1352009908.7926917,
-               status: "recent",
-               createdAt: "2021-09-20T23:47:33",
-               updatedAt: "2021-09-21T00:47:14"),
+                   symbol: "ETH-USD",
+                   baseAsset: "ETH",
+                   quoteAsset: "USD",
+                   priceUnconverted: 2906.5150000000003,
+                   price: 2906.5150000000003,
+                   changeLastDay: -11.5059888808374,
+                   spread: 0.018233234025285715,
+                   volumeLastDay: 1352009908.7926917,
+                   status: "recent",
+                   createdAt: "2021-09-20T23:47:33",
+                   updatedAt: "2021-09-21T00:47:14"),
             Market(exchangeId: "COINBASE",
-               symbol: "BTC-USD",
-               baseAsset: "BTC",
-               quoteAsset: "USD",
-               priceUnconverted: 52906.5150000000003,
-               price: 52906.5150000000003,
-               changeLastDay: -11.5059888808374,
-               spread: 0.018233234025285715,
-               volumeLastDay: 1352009908.7926917,
-               status: "recent",
-               createdAt: "2021-09-20T23:47:33",
-               updatedAt: "2021-09-21T00:47:14"),
+                   symbol: "BTC-USD",
+                   baseAsset: "BTC",
+                   quoteAsset: "USD",
+                   priceUnconverted: 52906.5150000000003,
+                   price: 52906.5150000000003,
+                   changeLastDay: -11.5059888808374,
+                   spread: 0.018233234025285715,
+                   volumeLastDay: 1352009908.7926917,
+                   status: "recent",
+                   createdAt: "2021-09-20T23:47:33",
+                   updatedAt: "2021-09-21T00:47:14"),
             Market(exchangeId: "COINBASE",
-               symbol: "XRP-USD",
-               baseAsset: "XRP",
-               quoteAsset: "USD",
-               priceUnconverted: 2.5150000000003,
-               price: 2.5150000000003,
-               changeLastDay: -0.5059888808374,
-               spread: 0.018233234025285715,
-               volumeLastDay: 1352009908.7926917,
-               status: "recent",
-               createdAt: "2021-09-20T23:47:33",
-               updatedAt: "2021-09-21T00:47:14"),
-         ]
-    }
-}
-
-struct AllMarketsDescription: Codable {
-    let markets: [Market]
-    let next: String
-    
-    enum CodingKeys: String, CodingKey {
-        case markets, next
+                   symbol: "XRP-USD",
+                   baseAsset: "XRP",
+                   quoteAsset: "USD",
+                   priceUnconverted: 2.5150000000003,
+                   price: 2.5150000000003,
+                   changeLastDay: -0.5059888808374,
+                   spread: 0.018233234025285715,
+                   volumeLastDay: 1352009908.7926917,
+                   status: "recent",
+                   createdAt: "2021-09-20T23:47:33",
+                   updatedAt: "2021-09-21T00:47:14"),
+        ]
     }
 }
