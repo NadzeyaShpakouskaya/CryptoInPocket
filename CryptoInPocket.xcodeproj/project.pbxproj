@@ -335,10 +335,10 @@
 			isa = PBXGroup;
 			children = (
 				FD3ED67A279555FF00614E5C /* Main Tab View */,
-				FDDA141B278BF54D008E5C94 /* Searching */,
 				FDADC275276AF22100938E57 /* Exchanges */,
 				FDADC278276AF67600938E57 /* Currencies */,
 				FDADC29A276C68BE00938E57 /* Favorites */,
+				FDDA141B278BF54D008E5C94 /* Searching */,
 				FDADC285276B1DF600938E57 /* Markets */,
 			);
 			path = Views;
