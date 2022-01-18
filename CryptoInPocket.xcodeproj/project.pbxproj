@@ -240,9 +240,9 @@
 		FDADC29A276C68BE00938E57 /* Favorites */ = {
 			isa = PBXGroup;
 			children = (
+				FDDA140E2786B167008E5C94 /* Favorites View */,
 				FDADC2A12771E75600938E57 /* FavoriteButtonView.swift */,
 				FDDA140A278580B2008E5C94 /* FavoriteRowView.swift */,
-				FDDA140E2786B167008E5C94 /* Favorites View */,
 				FDDA14122786B1BD008E5C94 /* Favorite Pop Up Currency */,
 				FDDA140F2786B180008E5C94 /* Favorite Pop Up Exchange */,
 			);

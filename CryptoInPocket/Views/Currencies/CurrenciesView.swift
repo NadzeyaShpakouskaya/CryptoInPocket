@@ -11,20 +11,21 @@ struct CurrenciesView: View {
     @ObservedObject var viewModel: CurrenciesViewModel
     
     var body: some View {
-
-        List(viewModel.loadedCurrencies, id: \.currencyId) { currencyDetailsVM in
-            if currencyDetailsVM == viewModel.lastFetched {
-                CurrencyRow(currencyDetailsVM: currencyDetailsVM)
-                    .task { await viewModel.loadMoreCurrencies() }
-                LoadingView()
-            } else {
-                CurrencyRow(currencyDetailsVM: currencyDetailsVM)
+        NavigationView {
+            List(viewModel.loadedCurrencies, id: \.currencyId) { currencyDetailsVM in
+                if currencyDetailsVM == viewModel.lastFetched {
+                    CurrencyRow(currencyDetailsVM: currencyDetailsVM)
+                        .task { await viewModel.loadMoreCurrencies() }
+                    LoadingView()
+                } else {
+                    CurrencyRow(currencyDetailsVM: currencyDetailsVM)
+                }
             }
-        }
-        .navigationTitle(viewModel.header)
-        .navigationBarTitleDisplayMode(/*@START_MENU_TOKEN@*/.inline/*@END_MENU_TOKEN@*/)
-        .task {
-            await viewModel.loadMoreCurrencies()
+            .navigationTitle(viewModel.header)
+            .navigationBarTitleDisplayMode(/*@START_MENU_TOKEN@*/.inline/*@END_MENU_TOKEN@*/)
+            .task {
+                await viewModel.loadMoreCurrencies()
+            }
         }
     }
     

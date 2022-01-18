@@ -12,9 +12,8 @@ struct FavoriteRowView: View {
     let color: Color
     
     var body: some View{
-        HStack{
+        HStack {
             Text(title)
-                .multilineTextAlignment(.leading)
             Spacer()
             Image(systemName: "info")
                 .foregroundColor(color)

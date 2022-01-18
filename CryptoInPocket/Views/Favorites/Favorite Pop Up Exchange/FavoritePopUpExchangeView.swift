@@ -27,7 +27,7 @@ struct FavoritePopUpExchangeView: View {
 
 extension FavoritePopUpExchangeView {
     private var generalInfo: some View {
-        VStack {
+        VStack(spacing: 24) {
             HStack {
                 Spacer()
                 Text(detailedViewModel.exchangeName)

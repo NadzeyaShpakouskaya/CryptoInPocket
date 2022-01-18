@@ -11,18 +11,20 @@ struct ExchangesView: View {
     @ObservedObject var viewModel: ExchangesViewModel
     
     var body: some View {
-        Group {
-            if viewModel.exchanges.isEmpty {
-                LoadingView()
-                    .task { await viewModel.fetchExchanges() }
-            } else {
-                List(viewModel.exchanges, id: \.exchangeID) { exchangeDetailsVM in
-                    ExchangeRow(viewModel: exchangeDetailsVM)
+        NavigationView {
+            Group {
+                if viewModel.exchanges.isEmpty {
+                    LoadingView()
+                        .task { await viewModel.fetchExchanges() }
+                } else {
+                    List(viewModel.exchanges, id: \.exchangeID) { exchangeDetailsVM in
+                        ExchangeRow(viewModel: exchangeDetailsVM)
+                    }
                 }
             }
+            .navigationTitle(viewModel.header)
+            .navigationBarTitleDisplayMode(/*@START_MENU_TOKEN@*/.inline/*@END_MENU_TOKEN@*/)
         }
-        .navigationTitle(viewModel.header)
-        .navigationBarTitleDisplayMode(/*@START_MENU_TOKEN@*/.inline/*@END_MENU_TOKEN@*/)
     }
 }
 

@@ -14,7 +14,7 @@ struct FavoritesView: View {
     @State private var showExchangePopover: Bool = false
     
     var body: some View {
-  
+        NavigationView {
             ZStack {
                 List {
                     exchangeSection
@@ -36,7 +36,7 @@ struct FavoritesView: View {
             .navigationTitle(viewModel.mainHeader)
             .navigationBarTitleDisplayMode(/*@START_MENU_TOKEN@*/.inline/*@END_MENU_TOKEN@*/)
             .onAppear { viewModel.loadFavoritesInfo() }
-   
+        }
     }
 }
 
@@ -63,7 +63,7 @@ extension FavoritesView {
             ForEach(viewModel.favoriteCurrenciesNames, id: \.self) { title in
                 FavoriteRowView(title: title, color: .orange)
                     .onTapGesture {
-                        Task{
+                        Task {
                             await viewModel.fetchCurrencyWith(id: title)
                         }
                         showCurrencyPopover.toggle()

@@ -7,15 +7,11 @@
 
 import Foundation
 
-class AssetViewModel: ObservableObject  {
+class AssetViewModel: ObservableObject {
 
-    
     var info: String {
-        if currency.name != "" {
-            return  "\(currency.assetId) - \(currency.name ?? "")"
-        } else {
-            return currency.assetId
-        }
+        guard let name = currency.name, !name.isEmpty else { return currency.assetId }
+        return "\(currency.assetId) - \(currency.name ?? "")"
     }
     
     var id: String {

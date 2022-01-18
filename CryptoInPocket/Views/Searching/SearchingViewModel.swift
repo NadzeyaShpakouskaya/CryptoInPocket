@@ -21,7 +21,7 @@ class SearchingViewModel: ObservableObject {
                 let viewModel = AssetViewModel(data: asset)
                 currencies.append(viewModel)
             }
-        } catch  {
+        } catch {
             print(error.localizedDescription)
         }
     }
@@ -32,7 +32,6 @@ class SearchingViewModel: ObservableObject {
         do {
             let currency = try await NetworkManagerAsync.shared.fetchCurrencyBy(id: id)
             selectedCurrency = DetailedCurrencyViewModel(currency)
-
         } catch {
             print(error.localizedDescription)
         }

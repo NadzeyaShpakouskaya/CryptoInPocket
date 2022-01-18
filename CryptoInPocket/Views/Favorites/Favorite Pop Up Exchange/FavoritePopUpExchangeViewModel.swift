@@ -47,7 +47,8 @@ class FavoritePopUpExchangeViewModel: ObservableObject {
         self.exchange = exchange
     }
     
-    @MainActor func fetchFavoriteMarketsForExchange() async {
+    @MainActor
+    func fetchFavoriteMarketsForExchange() async {
         favoriteCurrencies = []
         let favoritesCurrencies = LocalDataStorageManager.shared.fetchFavoriteCurrencies()
         do {
@@ -62,8 +63,7 @@ class FavoritePopUpExchangeViewModel: ObservableObject {
             for favorite in filteredMarkets {
                 favoriteCurrencies.append(MarketForExchangeDetailedViewModel(market: favorite))
             }
-           
-        } catch  {
+        } catch {
             print(error.localizedDescription)
         }
     }

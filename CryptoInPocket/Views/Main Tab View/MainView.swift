@@ -17,31 +17,30 @@ struct MainView: View {
     }
     
     var body: some View {
-        NavigationView {
-            TabView {
-                ExchangesView(viewModel: ExchangesViewModel())
-                    .tabItem {
-                        Image(systemName: viewModel.exchangeTabImage)
-                        Text(viewModel.exchangeTitle)
-                    }
-                CurrenciesView(viewModel: CurrenciesViewModel())
-                    .tabItem {
-                        Image(systemName: viewModel.currencyTabImage)
-                        Text(viewModel.currencyTitle)
-                    }
-                FavoritesView(viewModel: FavoritesViewModel())
-                    .tabItem {
-                        Image(systemName: viewModel.favoriteTabImage)
-                        Text(viewModel.favoriteTitle)
-                    }
-                Searching()
-                    .tabItem {
-                        Image(systemName: viewModel.searchingTabImage)
-                        Text(viewModel.searchingTitle)
-                    }
-            }
-            .font(.headline)
+        
+        TabView {
+            ExchangesView(viewModel: ExchangesViewModel())
+                .tabItem {
+                    Image(systemName: viewModel.exchangeTabImage)
+                    Text(viewModel.exchangeTitle)
+                }
+            CurrenciesView(viewModel: CurrenciesViewModel())
+                .tabItem {
+                    Image(systemName: viewModel.currencyTabImage)
+                    Text(viewModel.currencyTitle)
+                }
+            FavoritesView(viewModel: FavoritesViewModel())
+                .tabItem {
+                    Image(systemName: viewModel.favoriteTabImage)
+                    Text(viewModel.favoriteTitle)
+                }
+            Searching(viewModel: SearchingViewModel())
+                .tabItem {
+                    Image(systemName: viewModel.searchingTabImage)
+                    Text(viewModel.searchingTitle)
+                }
         }
+        .font(.headline)
     }
 }
 

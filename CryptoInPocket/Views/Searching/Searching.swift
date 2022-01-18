@@ -8,45 +8,48 @@
 import SwiftUI
 
 struct Searching: View {
-    @StateObject var viewModel: SearchingViewModel = SearchingViewModel()
+    @ObservedObject var viewModel: SearchingViewModel
+    
     @State private var searchText = ""
     @State private var showDetailed = false
-
+    
     var body: some View {
-
-            ZStack{
-                List {
-                    ForEach(searchResults, id: \.id) { item in
-                        FavoriteRowView(title: item.info, color: .gray)
-                        .onTapGesture {
-                            Task {
-                                await viewModel.fetchCurrencyWith(id: item.id)
+        NavigationView {
+            Group {
+                if viewModel.currencies.isEmpty {
+                    LoadingView()
+                        .task { await viewModel.fetchData() }
+                } else {
+                    ZStack {
+                        currenciesList
+                        if showDetailed {
+                            if let selected = viewModel.selectedCurrency {
+                                SmallPopUpCurrencyView(detailedViewModel: selected, showPopUp: $showDetailed)
                             }
-                            showDetailed.toggle()
                         }
                     }
                 }
-                .searchable(
-                    text: $searchText,
-                    placement: .navigationBarDrawer(displayMode: .always)
-                )
-                if showDetailed {
-                    if let selected = viewModel.selectedCurrency {
-                    
-                            SmallPopUpCurrencyView(detailedViewModel: selected, showPopUp: $showDetailed)
-                                .padding()
-                                .shadow(color: .gray, radius: 2)
-                        
-                    }
-                }
+                
             }
             .navigationBarTitleDisplayMode(/*@START_MENU_TOKEN@*/.inline/*@END_MENU_TOKEN@*/)
-            .task {
-                await viewModel.fetchData()
+        }
+    }
+}
+
+extension Searching {
+    private var currenciesList: some View {
+        List {
+            ForEach(searchResults, id: \.id) { item in
+                FavoriteRowView(title: item.info, color: .gray)
+                    .onTapGesture {
+                        Task { await viewModel.fetchCurrencyWith(id: item.id) }
+                        showDetailed.toggle()
+                    }
             }
- 
-            
-        
+        }.searchable(
+            text: $searchText,
+            placement: .navigationBarDrawer(displayMode: .always)
+        )
     }
     
     var searchResults: [AssetViewModel] {
@@ -59,12 +62,10 @@ struct Searching: View {
         }
     }
     
-    
-    
 }
 
 struct Searching_Previews: PreviewProvider {
     static var previews: some View {
-        Searching()
+        Searching(viewModel: SearchingViewModel())
     }
 }
