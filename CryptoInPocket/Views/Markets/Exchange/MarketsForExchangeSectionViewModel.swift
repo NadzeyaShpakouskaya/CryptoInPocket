@@ -9,7 +9,7 @@ import Foundation
 
 class MarketsForExchangeSectionViewModel: ObservableObject {
     @Published var marketsForExchange: [MarketForExchangeDetailedViewModel] = []
-    @Published var isMarketsSectionHidden: Bool  {
+    @Published var isMarketsSectionHidden: Bool {
         didSet {
             LocalDataStorageManager.shared.saveSectionPresentedStatus(as: isMarketsSectionHidden)
         }
@@ -19,11 +19,12 @@ class MarketsForExchangeSectionViewModel: ObservableObject {
         isMarketsSectionHidden = LocalDataStorageManager.shared.loadData().isMarketsSectionHidden
     }
 
-    func hideMarketsButtonPressed(){
+    func hideMarketsButtonPressed() {
         isMarketsSectionHidden.toggle()
     }
  
-    @MainActor func fetchMarketsForExchange(with id: String) async {
+    @MainActor
+    func fetchMarketsForExchange(with id: String) async {
         marketsForExchange = []
         do {
             let marketsData = try await NetworkManagerAsync.shared.fetchMarketsForExchange(id: id)
@@ -31,7 +32,7 @@ class MarketsForExchangeSectionViewModel: ObservableObject {
                 let marketVM = MarketForExchangeDetailedViewModel(market: market)
                 marketsForExchange.append(marketVM)
             }
-        } catch  {
+        } catch {
             print(error.localizedDescription)
         }
     }

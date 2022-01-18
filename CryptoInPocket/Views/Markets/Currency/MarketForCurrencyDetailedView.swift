@@ -41,6 +41,8 @@ struct MarketForCurrencyDetailedView: View {
 
 struct MarketForCurrencyDetailedView_Previews: PreviewProvider {
     static var previews: some View {
-        MarketForCurrencyDetailedView(detailedVM: MarketForCurrencyDetailedViewModel(market: Market.getTestMarket()))
+        MarketForCurrencyDetailedView(
+            detailedVM: MarketForCurrencyDetailedViewModel(market: Market.getTestMarket())
+        )
     }
 }

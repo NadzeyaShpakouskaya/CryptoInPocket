@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct LoadingView: View {
+    
     var body: some View {
-        HStack{
+        HStack {
             Spacer()
             ProgressView()
             Spacer()

@@ -8,15 +8,14 @@
 import SwiftUI
 
 struct MarketsForCurrencySectionView: View {
-    @StateObject private var viewModel: MarketsForCurrencySectionViewModel = MarketsForCurrencySectionViewModel()
+    @ObservedObject private var viewModel: MarketsForCurrencySectionViewModel = MarketsForCurrencySectionViewModel()
     
     let id: String
     
     var body: some View {
         VStack {
-            SectionHeaderView(color: .orange)  {
-                    viewModel.hideMarketsButtonPressed()
-                }
+            SectionHeaderView(color: .orange) { viewModel.hideMarketsButtonPressed()
+            }
             Spacer()
             if !viewModel.isMarketsSectionHidden {
                 List(viewModel.markets, id: \.id) { detailedVM in
@@ -32,6 +31,7 @@ struct MarketsForCurrencySectionView: View {
 
 struct MarketForCurrencySectionView_Previews: PreviewProvider {
     static var previews: some View {
-        MarketsForCurrencySectionView(id: "BTC").environmentObject(MarketsForCurrencySectionViewModel())
+        MarketsForCurrencySectionView(id: "BTC")
+            .environmentObject(MarketsForCurrencySectionViewModel())
     }
 }

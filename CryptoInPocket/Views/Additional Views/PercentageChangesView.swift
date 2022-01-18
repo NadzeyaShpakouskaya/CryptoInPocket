@@ -35,7 +35,6 @@ struct PercentageChangesHorizontalView: View {
     }
 }
 
-
 struct PercentageChangesView_Previews: PreviewProvider {
     static var previews: some View {
         PercentageChangesView(title: "Last hour", value: "2%", isIncreased: true)

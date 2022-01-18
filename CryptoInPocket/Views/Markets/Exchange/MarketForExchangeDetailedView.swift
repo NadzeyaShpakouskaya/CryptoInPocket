@@ -11,7 +11,7 @@ struct MarketForExchangeDetailedView: View {
     @ObservedObject var detailedViewModel: MarketForExchangeDetailedViewModel
     
     var body: some View {
-        HStack(spacing: 8){
+        HStack(spacing: 8) {
             showArrowUpDown(for: detailedViewModel.isPriceIncreased)
             Text(detailedViewModel.baseCurrency)
                 .bold()

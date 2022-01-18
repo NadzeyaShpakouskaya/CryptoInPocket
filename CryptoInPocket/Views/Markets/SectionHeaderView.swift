@@ -14,7 +14,7 @@ struct SectionHeaderView: View {
     let action: () -> Void
     
     var body: some View {
-        HStack{
+        HStack {
             Text(viewModel.headerTitle)
             Spacer()
             Button(viewModel.buttonTitle, action: action)
@@ -26,6 +26,9 @@ struct SectionHeaderView: View {
 
 struct SectionHeaderView_Previews: PreviewProvider {
     static var previews: some View {
-        SectionHeaderView(viewModel: SectionHeaderViewModel(), color: .orange, action: {})
+        SectionHeaderView(
+            viewModel: SectionHeaderViewModel(),
+            color: .orange, action: {}
+        )
     }
 }

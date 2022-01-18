@@ -9,11 +9,7 @@ import Foundation
 
 class MarketForCurrencyDetailedViewModel: ObservableObject {
     var id: String {
-        if let mark = market.exchangeId, let baseAsset = market.baseAsset, let quoteAsset = market.quoteAsset{
-          return  mark + baseAsset + quoteAsset
-        } else {
-           return UUID().uuidString
-        }
+       UUID().uuidString
     }
 
     var exchange: String {
@@ -34,7 +30,7 @@ class MarketForCurrencyDetailedViewModel: ObservableObject {
     
     private var market: Market
     
-    init(market: Market){
+    init(market: Market) {
         self.market = market
     }
 }

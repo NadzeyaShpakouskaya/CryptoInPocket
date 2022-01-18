@@ -15,8 +15,7 @@ class SectionHeaderViewModel: ObservableObject {
     var buttonTitle: String {
         isMarketsHidden ? "Show": "Hide"
     }
-
-    
+ 
     private var isMarketsHidden: Bool
     
     init() {
