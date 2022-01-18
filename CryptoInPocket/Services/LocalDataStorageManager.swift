@@ -21,6 +21,7 @@ class LocalDataStorageManager: ObservableObject {
         ) else { return UserData() }
         return data
     }
+    
     func fetchFavoriteCurrencies() -> [String] {
         loadData().currenciesNames
     }
@@ -31,7 +32,7 @@ class LocalDataStorageManager: ObservableObject {
     
     func saveData(_ data: UserData) {
           userData = try? JSONEncoder().encode(data)
-      }
+    }
     
     func saveSectionPresentedStatus(as status: Bool) {
         var data = loadData()
@@ -71,8 +72,7 @@ class LocalDataStorageManager: ObservableObject {
     func isFavoriteExchange(with id: String) -> Bool {
         loadData().exchangesNames.contains(id)
     }
-    
-    
+        
     func addToFavorite(exchange: Exchange) {
         var data = loadData()
         data.exchangesNames.append(exchange.exchangeId)

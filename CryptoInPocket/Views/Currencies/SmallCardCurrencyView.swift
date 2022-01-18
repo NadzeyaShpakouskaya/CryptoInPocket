@@ -12,7 +12,7 @@ struct SmallCardCurrencyView: View {
     @ObservedObject var viewModel: DetailedCurrencyViewModel
     
     var body: some View {
-        VStack(spacing: 16){
+        VStack(spacing: 16) {
             generalInfoView
             currencyValueChangesView
         }.padding()

@@ -11,7 +11,7 @@ struct DetailedExchangeView: View {
     @ObservedObject var detailedViewModel: DetailedExchangeViewModel
     
     var body: some View {
-        VStack{
+        VStack {
             generalInfo
             MarketsForExchangeSectionView(id: detailedViewModel.exchangeID)
         }.padding()

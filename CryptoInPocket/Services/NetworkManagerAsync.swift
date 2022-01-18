@@ -25,13 +25,13 @@ class NetworkManagerAsync {
         return values.exchanges
     }
     
-    
     func fetchExchangeBy(id: String) async throws -> Exchange {
         let url = createBaseURL(for: .exchanges, with: id)
         guard let data = try? await fetchData(
             dataType: RemoteExchange.self,
             from: url,
             convertFromSnake: false) else { throw NetworkError.noData}
+        
         return data.exchange
     }
     
@@ -42,6 +42,7 @@ class NetworkManagerAsync {
             from: url,
             convertFromSnake: false
         ) else { throw NetworkError.noData }
+        
         return values.markets
     }
     
@@ -97,9 +98,9 @@ class NetworkManagerAsync {
     }
 }
 
-//MARK: - Privates methods
+// MARK: - Privates methods
 extension NetworkManagerAsync {
-    private func fetchData<T:Codable>(dataType: T.Type, from url: String, convertFromSnake: Bool) async throws -> T {
+    private func fetchData<T: Codable>(dataType: T.Type, from url: String, convertFromSnake: Bool) async throws -> T {
         guard let url = URL(string: url) else { throw NetworkError.invalidUrl }
         do {
             let (data, _) = try await URLSession.shared.data(from: url)
@@ -118,7 +119,6 @@ extension NetworkManagerAsync {
         
     }
     
-
     private func createBaseURL(for route: Route, with id: String? = nil, forMarkets: Bool = false) -> String {
         var path = ""
         if let id = id {
@@ -150,7 +150,6 @@ extension NetworkManagerAsync {
     }
 }
 
-
 enum NetworkError: Error {
     case invalidUrl
     case noData
@@ -158,12 +157,7 @@ enum NetworkError: Error {
 }
 
 enum Route: String {
-//    case baseURL = "https://www.cryptingup.com/api"
     case exchanges = "/exchanges"
-//    case marketsAll = "/markets"
     case currencies = "/assets"
     case currenciesFullList = "/assetsoverview"
 }
-
-
-

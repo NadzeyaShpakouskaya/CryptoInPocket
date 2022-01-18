@@ -14,9 +14,9 @@ extension View {
             .foregroundColor(value ? .green : .red)
     }
     
-    /// show
+    /// show price changing in percent
     func showPriceChangesInPercent(for periodTitle: String, and value: Double) -> some View {
-        VStack{
+        VStack {
             Text(periodTitle)
             Text(Double.formatNumber(value) + "%")
                 .foregroundColor(value >= 0 ? .green : .red)
@@ -46,8 +46,6 @@ extension View {
         appearance.backgroundColor = .systemMint.withAlphaComponent(0.7)
         
         UITabBar.appearance().standardAppearance = appearance
-        
-        
     }
     
     func setUpNavigationBar() {
@@ -62,7 +60,5 @@ extension View {
         UINavigationBar.appearance().scrollEdgeAppearance = coloredAppearance
         
         UINavigationBar.appearance().tintColor = .white
-        
     }
 }
-

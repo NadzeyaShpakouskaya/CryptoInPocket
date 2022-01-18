@@ -11,14 +11,14 @@ struct FavoriteRowView: View {
     let title: String
     let color: Color
     
-    var body: some View{
+    var body: some View {
+        
         HStack {
             Text(title)
             Spacer()
             Image(systemName: "info")
                 .foregroundColor(color)
         }.contentShape(Rectangle())
-        
     }
 }
 
