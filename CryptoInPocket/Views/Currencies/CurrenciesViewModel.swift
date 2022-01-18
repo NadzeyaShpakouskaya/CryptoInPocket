@@ -26,7 +26,8 @@ class CurrenciesViewModel: ObservableObject {
         loadedCurrencies.last
     }
     
-    @MainActor func fetchCurrenciesByPage() async {
+    @MainActor
+    private func fetchCurrenciesByPage() async {
        isLoading = true
         let  item = self.lastItem
         do {

@@ -7,11 +7,7 @@
 
 import Foundation
 
-class DetailedCurrencyViewModel: ObservableObject, Equatable {
-    static func == (lhs: DetailedCurrencyViewModel, rhs: DetailedCurrencyViewModel) -> Bool {
-        lhs.currencyId == rhs.currencyId
-    }
-    
+class DetailedCurrencyViewModel: ObservableObject, Equatable{
     
     @Published var isFavorite: Bool {
         didSet {
@@ -22,7 +18,6 @@ class DetailedCurrencyViewModel: ObservableObject, Equatable {
             }
         }
     }
-    
     
     var currencyId: String {
         currency.assetId
@@ -36,11 +31,9 @@ class DetailedCurrencyViewModel: ObservableObject, Equatable {
         "\(currencyName) (\(currencyId))"
     }
     
-    
     var description: String {
         currency.description ?? ""
     }
-    
     
     var priceInfo: String {
         "Price: $ \(Double.formatNumber(currency.price ?? 0))"
@@ -57,6 +50,7 @@ class DetailedCurrencyViewModel: ObservableObject, Equatable {
     var lastHourChangesTitle: String {
         "Last hour:"
     }
+    
     var lastHourChangesValue: String {
         let value = currency.changeLastHour ?? 0 * 100.0
         return "\(Double.formatNumber(value))%"
@@ -95,12 +89,15 @@ class DetailedCurrencyViewModel: ObservableObject, Equatable {
     
     init(_ currency: Currency) {
         self.currency = currency
-        isFavorite = LocalDataStorageManager.shared.loadData().currenciesNames.contains(currency.assetId)
+        isFavorite = LocalDataStorageManager.shared.isFavoriteCurrency(with: currency.assetId)
     }
-    
     
     func favoriteButtonPressed(){
         isFavorite.toggle()
+    }
+    
+    static func == (lhs: DetailedCurrencyViewModel, rhs: DetailedCurrencyViewModel) -> Bool {
+        lhs.currencyId == rhs.currencyId
     }
     
     

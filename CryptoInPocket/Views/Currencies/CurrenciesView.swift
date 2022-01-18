@@ -11,11 +11,12 @@ struct CurrenciesView: View {
     @ObservedObject var viewModel: CurrenciesViewModel
     
     var body: some View {
+
         List(viewModel.loadedCurrencies, id: \.currencyId) { currencyDetailsVM in
             if currencyDetailsVM == viewModel.lastFetched {
                 CurrencyRow(currencyDetailsVM: currencyDetailsVM)
                     .task { await viewModel.loadMoreCurrencies() }
-                loadingView
+                LoadingView()
             } else {
                 CurrencyRow(currencyDetailsVM: currencyDetailsVM)
             }
@@ -23,39 +24,15 @@ struct CurrenciesView: View {
         .navigationTitle(viewModel.header)
         .navigationBarTitleDisplayMode(/*@START_MENU_TOKEN@*/.inline/*@END_MENU_TOKEN@*/)
         .task {
-            await viewModel.fetchCurrenciesByPage()
+            await viewModel.loadMoreCurrencies()
         }
         
     }
     
-    private var loadingView: some View {
-        HStack{
-            Spacer()
-            ProgressView()
-            Spacer()
-        }
-    }
-    
-}
-
-struct CurrencyRow: View {
-    let currencyDetailsVM: DetailedCurrencyViewModel
-    
-    var body: some View {
-        NavigationLink(destination: DetailedCurrencyView(detailedViewModel: currencyDetailsVM)) {
-            HStack{
-                showArrowUpDown(for: currencyDetailsVM.isLastDayValueIncreased)
-                Text(currencyDetailsVM.currencyId)
-                Spacer()
-                Text(currencyDetailsVM.price)
-            }
-        }
-    }
 }
 
 struct CurrenciesView_Previews: PreviewProvider {
     static var previews: some View {
         CurrenciesView(viewModel: CurrenciesViewModel())
-        //            .environmentObject(CurrenciesViewModel())
     }
 }

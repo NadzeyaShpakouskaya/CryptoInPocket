@@ -23,8 +23,8 @@ struct DetailedExchangeView: View {
 // MARK: - SubViews
 
 extension DetailedExchangeView {
+    
     private var generalInfo: some View {
-        
         VStack(spacing: 16){
             HStack{
                 Image(systemName: "v.circle.fill")
@@ -36,7 +36,7 @@ extension DetailedExchangeView {
                 Image(systemName: "network")
                 Link(
                     detailedViewModel.titleForSiteLink,
-                    destination:detailedViewModel.urlForSiteLink
+                    destination: detailedViewModel.urlForSiteLink
                 )
                 Spacer()
                 FavoriteButtonView(

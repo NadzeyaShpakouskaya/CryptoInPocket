@@ -39,11 +39,16 @@ class LocalDataStorageManager: ObservableObject {
         saveData(data)
     }
     
+    func isFavoriteCurrency(with id: String) -> Bool {
+        loadData().currenciesNames.contains(id)
+    }
+    
     func addToFavorite(currency: Currency) {
         var data = loadData()
         data.currenciesNames.append(currency.assetId)
         saveData(data)
     }
+    
     func addCurrencyToFavoriteBy(id: String) {
         var data = loadData()
         data.currenciesNames.append(id)
@@ -62,6 +67,11 @@ class LocalDataStorageManager: ObservableObject {
         data.currenciesNames.remove(at: index)
         saveData(data)
     }
+    
+    func isFavoriteExchange(with id: String) -> Bool {
+        loadData().exchangesNames.contains(id)
+    }
+    
     
     func addToFavorite(exchange: Exchange) {
         var data = loadData()

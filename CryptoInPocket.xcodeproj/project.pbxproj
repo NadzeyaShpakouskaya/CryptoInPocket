@@ -30,6 +30,11 @@
 		FDADC2A22771E75600938E57 /* FavoriteButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDADC2A12771E75600938E57 /* FavoriteButtonView.swift */; };
 		FDAEA25F2782E070005AAD0E /* FavoritePopUpCurrencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDAEA25E2782E070005AAD0E /* FavoritePopUpCurrencyView.swift */; };
 		FDAEA2612782E085005AAD0E /* FavoritePopUpExchangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDAEA2602782E085005AAD0E /* FavoritePopUpExchangeView.swift */; };
+		FDC91BDE27958A4F0008BC4C /* ExchangeRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC91BDD27958A4F0008BC4C /* ExchangeRow.swift */; };
+		FDC91BE027959C460008BC4C /* CurrencyRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC91BDF27959C460008BC4C /* CurrencyRow.swift */; };
+		FDC91BE2279679940008BC4C /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC91BE1279679940008BC4C /* LoadingView.swift */; };
+		FDC91BE5279688F70008BC4C /* PercentageChangesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC91BE4279688F70008BC4C /* PercentageChangesView.swift */; };
+		FDC91BE727968CDD0008BC4C /* SmallCardCurrencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC91BE627968CDD0008BC4C /* SmallCardCurrencyView.swift */; };
 		FDDA140B278580B3008E5C94 /* FavoriteRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDA140A278580B2008E5C94 /* FavoriteRowView.swift */; };
 		FDDA140D2785B14B008E5C94 /* FavoritePopUpExchangeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDA140C2785B14B008E5C94 /* FavoritePopUpExchangeViewModel.swift */; };
 		FDDA14112786B1AA008E5C94 /* FavoritePopUpCurrencyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDA14102786B1AA008E5C94 /* FavoritePopUpCurrencyViewModel.swift */; };
@@ -96,6 +101,11 @@
 		FDADC2A12771E75600938E57 /* FavoriteButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteButtonView.swift; sourceTree = "<group>"; };
 		FDAEA25E2782E070005AAD0E /* FavoritePopUpCurrencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePopUpCurrencyView.swift; sourceTree = "<group>"; };
 		FDAEA2602782E085005AAD0E /* FavoritePopUpExchangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePopUpExchangeView.swift; sourceTree = "<group>"; };
+		FDC91BDD27958A4F0008BC4C /* ExchangeRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRow.swift; sourceTree = "<group>"; };
+		FDC91BDF27959C460008BC4C /* CurrencyRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyRow.swift; sourceTree = "<group>"; };
+		FDC91BE1279679940008BC4C /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		FDC91BE4279688F70008BC4C /* PercentageChangesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercentageChangesView.swift; sourceTree = "<group>"; };
+		FDC91BE627968CDD0008BC4C /* SmallCardCurrencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallCardCurrencyView.swift; sourceTree = "<group>"; };
 		FDDA140A278580B2008E5C94 /* FavoriteRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRowView.swift; sourceTree = "<group>"; };
 		FDDA140C2785B14B008E5C94 /* FavoritePopUpExchangeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePopUpExchangeViewModel.swift; sourceTree = "<group>"; };
 		FDDA14102786B1AA008E5C94 /* FavoritePopUpCurrencyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePopUpCurrencyViewModel.swift; sourceTree = "<group>"; };
@@ -171,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				FDDBB917276A3A3100B17DE0 /* ExchangesView.swift */,
+				FDC91BDD27958A4F0008BC4C /* ExchangeRow.swift */,
 				FDDBB92E276A3EFA00B17DE0 /* ExchangesViewModel.swift */,
 				FDADC276276AF26700938E57 /* DetailedExchangeView.swift */,
 				FDADC26E276A40D100938E57 /* DetailedExchangeViewModel.swift */,
@@ -183,8 +194,10 @@
 			children = (
 				FDDBB919276A3A3C00B17DE0 /* CurrenciesView.swift */,
 				FDADC27B276AFD0F00938E57 /* CurrenciesViewModel.swift */,
+				FDC91BDF27959C460008BC4C /* CurrencyRow.swift */,
 				FDADC27D276AFD2C00938E57 /* DetailedCurrencyView.swift */,
 				FDADC27F276AFD3B00938E57 /* DetailedCurrencyViewModel.swift */,
+				FDC91BE627968CDD0008BC4C /* SmallCardCurrencyView.swift */,
 			);
 			path = Currencies;
 			sourceTree = "<group>";
@@ -232,6 +245,15 @@
 				FDDA140F2786B180008E5C94 /* Favorite Pop Up Exchange */,
 			);
 			path = Favorites;
+			sourceTree = "<group>";
+		};
+		FDC91BE3279688BF0008BC4C /* Additional Views */ = {
+			isa = PBXGroup;
+			children = (
+				FDC91BE4279688F70008BC4C /* PercentageChangesView.swift */,
+				FDC91BE1279679940008BC4C /* LoadingView.swift */,
+			);
+			path = "Additional Views";
 			sourceTree = "<group>";
 		};
 		FDDA140E2786B167008E5C94 /* Favorites View */ = {
@@ -340,6 +362,7 @@
 				FDADC29A276C68BE00938E57 /* Favorites */,
 				FDDA141B278BF54D008E5C94 /* Searching */,
 				FDADC285276B1DF600938E57 /* Markets */,
+				FDC91BE3279688BF0008BC4C /* Additional Views */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -525,14 +548,18 @@
 				FDDBB92F276A3EFA00B17DE0 /* ExchangesViewModel.swift in Sources */,
 				FDADC28B276B2A4900938E57 /* MarketForExchangeDetailedView.swift in Sources */,
 				FDDA1416278BF070008E5C94 /* Searching.swift in Sources */,
+				FDC91BE5279688F70008BC4C /* PercentageChangesView.swift in Sources */,
+				FDC91BE027959C460008BC4C /* CurrencyRow.swift in Sources */,
 				FDDBB91F276A3AF300B17DE0 /* UserData.swift in Sources */,
 				FDAEA2612782E085005AAD0E /* FavoritePopUpExchangeView.swift in Sources */,
 				FDDBB91A276A3A3C00B17DE0 /* CurrenciesView.swift in Sources */,
 				FDDA141D278D4BE8008E5C94 /* SmallPopUpCurrencyView.swift in Sources */,
 				FDADC27C276AFD0F00938E57 /* CurrenciesViewModel.swift in Sources */,
 				FDADC273276A446C00938E57 /* View+Extension.swift in Sources */,
+				FDC91BDE27958A4F0008BC4C /* ExchangeRow.swift in Sources */,
 				FDDBB921276A3B3A00B17DE0 /* Market.swift in Sources */,
 				FDADC292276B5CCF00938E57 /* MarketForCurrencyDetailedViewModel.swift in Sources */,
+				FDC91BE2279679940008BC4C /* LoadingView.swift in Sources */,
 				FDADC2A0276F199500938E57 /* SectionHeaderViewModel.swift in Sources */,
 				FDDBB91C276A3A4E00B17DE0 /* FavoritesView.swift in Sources */,
 				FDAEA25F2782E070005AAD0E /* FavoritePopUpCurrencyView.swift in Sources */,
@@ -547,6 +574,7 @@
 				FDADC29E276C695D00938E57 /* LocalDataStorageManager.swift in Sources */,
 				FD3ED6792795522600614E5C /* MainViewViewModel.swift in Sources */,
 				FDDA1418278BF130008E5C94 /* SearchingViewModel.swift in Sources */,
+				FDC91BE727968CDD0008BC4C /* SmallCardCurrencyView.swift in Sources */,
 				FDADC282276B1DD400938E57 /* MarketsForExchangeSectionView.swift in Sources */,
 				FDDBB8EC276A39E400B17DE0 /* CryptoInPocketApp.swift in Sources */,
 				FDADC27E276AFD2C00938E57 /* DetailedCurrencyView.swift in Sources */,

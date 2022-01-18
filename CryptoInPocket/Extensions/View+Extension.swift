@@ -53,17 +53,16 @@ extension View {
     func setUpNavigationBar() {
         
         let coloredAppearance = UINavigationBarAppearance()
-        coloredAppearance.configureWithOpaqueBackground()
         coloredAppearance.backgroundColor = .systemMint.withAlphaComponent(0.7)
         coloredAppearance.titleTextAttributes = [.foregroundColor: UIColor.darkGray]
         coloredAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.darkGray]
-        
+
         UINavigationBar.appearance().standardAppearance = coloredAppearance
         UINavigationBar.appearance().compactAppearance = coloredAppearance
         UINavigationBar.appearance().scrollEdgeAppearance = coloredAppearance
         
         UINavigationBar.appearance().tintColor = .white
-        UINavigationBar.appearance()
+        
     }
 }
 
