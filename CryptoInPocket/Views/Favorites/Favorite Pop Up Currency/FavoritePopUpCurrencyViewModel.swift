@@ -75,7 +75,6 @@ class FavoritePopUpCurrencyViewModel: ObservableObject {
     
     init(_ currency: Currency) {
         self.currency = currency
-  
     }
     
     @MainActor
@@ -87,18 +86,16 @@ class FavoritePopUpCurrencyViewModel: ObservableObject {
             var markets = [Market]()
             
             for market in marketsData {
-                for exchange in favoriteExchanges {
-                    if market.exchangeId == exchange {
+                for exchange in favoriteExchanges where market.exchangeId == exchange {
                         markets.append(market)
-                    }
                 }
             }
             
             markets.sort { $0.exchangeId ?? "" < $1.exchangeId ?? "" }
+            
             for favorite in markets {
                 favoriteVMExchanges.append(MarketForCurrencyDetailedViewModel(market: favorite))
             }
-           
         } catch {
             print(error.localizedDescription)
         }

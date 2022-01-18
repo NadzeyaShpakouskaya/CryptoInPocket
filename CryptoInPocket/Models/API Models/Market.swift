@@ -105,7 +105,7 @@ extension Market {
                    volumeLastDay: 1352009908.7926917,
                    status: "recent",
                    createdAt: "2021-09-20T23:47:33",
-                   updatedAt: "2021-09-21T00:47:14"),
+                   updatedAt: "2021-09-21T00:47:14")
         ]
     }
 }

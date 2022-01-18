@@ -12,7 +12,7 @@ struct CurrencyRow: View {
     
     var body: some View {
         NavigationLink(destination: DetailedCurrencyView(detailedViewModel: currencyDetailsVM)) {
-            HStack(spacing: 16){
+            HStack(spacing: 16) {
                 showArrowUpDown(for: currencyDetailsVM.isLastDayValueIncreased)
                 Text(currencyDetailsVM.currencyId)
                 Spacer()

@@ -25,14 +25,14 @@ struct DetailedExchangeView: View {
 extension DetailedExchangeView {
     
     private var generalInfo: some View {
-        VStack(spacing: 16){
-            HStack{
+        VStack(spacing: 16) {
+            HStack {
                 Image(systemName: "v.circle.fill")
                 Text(detailedViewModel.tradingLabelText)
                 Spacer()
                 Text(detailedViewModel.valueTradingText)
             }
-            HStack{
+            HStack {
                 Image(systemName: "network")
                 Link(
                     detailedViewModel.titleForSiteLink,

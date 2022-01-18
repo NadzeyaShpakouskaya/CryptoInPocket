@@ -20,7 +20,7 @@ class ExchangesViewModel: ObservableObject {
                 let exchangeVM = DetailedExchangeViewModel(exchange: exchange)
                 exchanges.append(exchangeVM)
             }
-        } catch  {
+        } catch {
             print(error.localizedDescription)
         }
     }

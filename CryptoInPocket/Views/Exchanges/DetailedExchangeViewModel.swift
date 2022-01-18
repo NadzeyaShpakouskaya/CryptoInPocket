@@ -18,7 +18,6 @@ class DetailedExchangeViewModel: ObservableObject {
         }
     }
     
-
     var exchangeID: String {
         exchange.exchangeId
     }
@@ -48,12 +47,12 @@ class DetailedExchangeViewModel: ObservableObject {
     
     private var exchange: Exchange
     
-    init(exchange: Exchange){
+    init(exchange: Exchange) {
         self.exchange = exchange
         isFavorite = LocalDataStorageManager.shared.loadData().exchangesNames.contains(exchange.exchangeId)
     }
     
-    func favoriteButtonPressed(){
+    func favoriteButtonPressed() {
         isFavorite.toggle()
     }
 }

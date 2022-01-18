@@ -45,7 +45,7 @@ extension Exchange {
         [
             Exchange(exchangeId: "BINANCE", name: "Binance", website: "https://www.binance.com", volumeLastDay: 36052149854.27475),
             Exchange(exchangeId: "HUOBIGLOBAL", name: "Huobi Global", website: "https://www.huobi.com", volumeLastDay: 12345357456.98),
-            Exchange(exchangeId: "COINBASE", name: "Coinbase", website: "https://pro.coinbase.com", volumeLastDay: 8058319118.753507),
+            Exchange(exchangeId: "COINBASE", name: "Coinbase", website: "https://pro.coinbase.com", volumeLastDay: 8058319118.753507)
         ]
     }
 }

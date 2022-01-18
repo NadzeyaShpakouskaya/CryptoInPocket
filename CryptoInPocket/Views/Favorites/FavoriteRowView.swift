@@ -18,7 +18,6 @@ struct FavoriteRowView: View {
             Spacer()
             Image(systemName: "info")
                 .foregroundColor(color)
-            
         }.contentShape(Rectangle())
         
     }

@@ -66,7 +66,7 @@ extension Currency {
     static func getTestCurrency() -> Currency {
         Currency(assetId: "USDT",
                  name: "Tether",
-                 description: "Bitcoin uses peer-to-peer technology to operate with no central authority or banks; managing transactions and the issuing of bitcoins is carried out collectively by the network.\r\nBitcoin is open-source; its design is public, nobody owns or controls Bitcoin and everyone can take part. Through many of its unique properties, Bitcoin allows exciting uses that could not be covered by any previous payment system.",
+                 description: "Bitcoin uses peer-to-peer technology to operate with no central authority or banks; managing transactions  is carried out collectively by the network.",
                  price: 1.0001452718521675,
                  volumeLastDay: 35389562234.59391,
                  changeLastHour: -0.020511090129785286,
@@ -97,7 +97,7 @@ extension Currency {
         [
             Currency(assetId: "USDT",
                      name: "Tether",
-                     description: "Bitcoin uses peer-to-peer technology to operate with no central authority or banks; managing transactions and the issuing of bitcoins is carried out collectively by the network.\r\nBitcoin is open-source; its design is public, nobody owns or controls Bitcoin and everyone can take part. Through many of its unique properties, Bitcoin allows exciting uses that could not be covered by any previous payment system.",
+                     description: "Bitcoin uses peer-to-peer technology to operate with no central authority or banks; managing transactions  is carried out collectively by the network.",
                      price: 1.0001452718521675,
                      volumeLastDay: 35389562234.59391,
                      changeLastHour: -0.020511090129785286,
@@ -109,7 +109,7 @@ extension Currency {
                     ),
             Currency(assetId: "XRP",
                      name: "Ripple",
-                     description: "Bitcoin uses peer-to-peer technology to operate with no central authority or banks; managing transactions and the issuing of bitcoins is carried out collectively by the network.\r\nBitcoin is open-source; its design is public, nobody owns or controls Bitcoin and everyone can take part. Through many of its unique properties, Bitcoin allows exciting uses that could not be covered by any previous payment system.",
+                     description: "Bitcoin uses peer-to-peer technology to operate with no central authority or banks; managing transactions  is carried out collectively by the network.",
                      price: 1.8901452718521675,
                      volumeLastDay: 19562234.59391,
                      changeLastHour: -0.020511090129785286,

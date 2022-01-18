@@ -10,7 +10,7 @@ import SwiftUI
 struct MainView: View {
     let viewModel: MainViewViewModel
     
-    init(viewModel: MainViewViewModel){
+    init(viewModel: MainViewViewModel) {
         self.viewModel = viewModel
         setUpTabBar()
         setUpNavigationBar()
@@ -29,7 +29,7 @@ struct MainView: View {
                         Image(systemName: viewModel.currencyTabImage)
                         Text(viewModel.currencyTitle)
                     }
-                FavoritesView()
+                FavoritesView(viewModel: FavoritesViewModel())
                     .tabItem {
                         Image(systemName: viewModel.favoriteTabImage)
                         Text(viewModel.favoriteTitle)
@@ -41,7 +41,6 @@ struct MainView: View {
                     }
             }
             .font(.headline)
-            
         }
     }
 }

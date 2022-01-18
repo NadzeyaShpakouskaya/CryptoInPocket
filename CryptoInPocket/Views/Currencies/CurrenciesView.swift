@@ -26,7 +26,6 @@ struct CurrenciesView: View {
         .task {
             await viewModel.loadMoreCurrencies()
         }
-        
     }
     
 }

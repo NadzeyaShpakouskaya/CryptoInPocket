@@ -7,7 +7,7 @@
 
 import Foundation
 
-class DetailedCurrencyViewModel: ObservableObject, Equatable{
+class DetailedCurrencyViewModel: ObservableObject, Equatable {
     
     @Published var isFavorite: Bool {
         didSet {
@@ -92,13 +92,12 @@ class DetailedCurrencyViewModel: ObservableObject, Equatable{
         isFavorite = LocalDataStorageManager.shared.isFavoriteCurrency(with: currency.assetId)
     }
     
-    func favoriteButtonPressed(){
+    func favoriteButtonPressed() {
         isFavorite.toggle()
     }
     
     static func == (lhs: DetailedCurrencyViewModel, rhs: DetailedCurrencyViewModel) -> Bool {
         lhs.currencyId == rhs.currencyId
     }
-    
     
 }

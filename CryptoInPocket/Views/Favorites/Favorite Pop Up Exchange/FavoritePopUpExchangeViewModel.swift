@@ -43,7 +43,7 @@ class FavoritePopUpExchangeViewModel: ObservableObject {
     
     private var exchange: Exchange
     
-    init(exchange: Exchange){
+    init(exchange: Exchange) {
         self.exchange = exchange
     }
     
@@ -53,11 +53,9 @@ class FavoritePopUpExchangeViewModel: ObservableObject {
         do {
             let marketsData = try await NetworkManagerAsync.shared.fetchMarketsForExchange(id: exchangeID)
             var filteredMarkets = [Market]()
-            for market in marketsData{
-                for currency in favoritesCurrencies {
-                    if market.baseAsset == currency {
+            for market in marketsData {
+                for currency in favoritesCurrencies where market.baseAsset == currency {
                         filteredMarkets.append(market)
-                    }
                 }
             }
             filteredMarkets.sort {$0.baseAsset ?? "" <= $1.baseAsset ?? ""}

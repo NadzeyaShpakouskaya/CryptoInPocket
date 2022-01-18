@@ -8,23 +8,34 @@
 import SwiftUI
 
 struct MarketForCurrencyDetailedView: View {
+    var  isVolumeDisplaying: Bool
     @ObservedObject var detailedVM: MarketForCurrencyDetailedViewModel
+    
+    init(isVolumeDisplaying: Bool = true, detailedVM: MarketForCurrencyDetailedViewModel) {
+        self.isVolumeDisplaying = isVolumeDisplaying
+        self.detailedVM = detailedVM
+    }
     
     var body: some View {
         HStack(spacing: 8) {
-            showArrowUpDown(for: detailedVM.isPriceIncreased)
-            Text(detailedVM.exchange)
-                .bold()
-                .font(.subheadline)
-                .frame(width: 110, alignment: .leading)
-            Text(detailedVM.priceInfo)
-                .font(.subheadline)
-                .frame(alignment: .leading)
-            Spacer()
-            Text(detailedVM.tradeVolume)
-                .font(.footnote)
-                .frame(width: 50)
+            Group {
+                showArrowUpDown(for: detailedVM.isPriceIncreased)
+                Text(detailedVM.exchange)
+                    .bold()
+                    .font(.subheadline)
+                    .frame(width: 110, alignment: .leading)
+                Text(detailedVM.priceInfo)
+                    .font(.subheadline)
+                    .frame(alignment: .leading)
+                
+                if isVolumeDisplaying {
+                    Spacer()
+                    Text(detailedVM.tradeVolume)
+                        .font(.footnote)
+                        .frame(width: 50)
+                }
             }
+        }
     }
 }
 

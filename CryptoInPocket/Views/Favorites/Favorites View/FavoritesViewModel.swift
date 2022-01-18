@@ -31,8 +31,6 @@ class FavoritesViewModel: ObservableObject {
         "My currencies"
     }
     
-    
-    
     @MainActor
     func fetchCurrencyWith(id: String) async {
         selectedCurrency = nil
@@ -69,6 +67,5 @@ class FavoritesViewModel: ObservableObject {
         favoriteExchangesNames = LocalDataStorageManager.shared.fetchFavoriteExchanges()
         favoriteCurrenciesNames = LocalDataStorageManager.shared.fetchFavoriteCurrencies()
     }
-    
     
 }

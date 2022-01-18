@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-
 struct SmallCardCurrencyView: View {
-    @ObservedObject var viewModel:  DetailedCurrencyViewModel
+
+    @ObservedObject var viewModel: DetailedCurrencyViewModel
     
     var body: some View {
         VStack(spacing: 16){
@@ -45,8 +45,8 @@ extension SmallCardCurrencyView {
         }
     }
     
-    private var currencyValueChangesView: some View{
-        HStack{
+    private var currencyValueChangesView: some View {
+        HStack {
             PercentageChangesView(
                 title: viewModel.lastHourChangesTitle,
                 value: viewModel.lastHourChangesValue,
@@ -66,7 +66,6 @@ extension SmallCardCurrencyView {
         }
     }
 }
-
 
 struct SmallCardCurrencyView_Previews: PreviewProvider {
     static var previews: some View {

@@ -35,6 +35,7 @@
 		FDC91BE2279679940008BC4C /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC91BE1279679940008BC4C /* LoadingView.swift */; };
 		FDC91BE5279688F70008BC4C /* PercentageChangesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC91BE4279688F70008BC4C /* PercentageChangesView.swift */; };
 		FDC91BE727968CDD0008BC4C /* SmallCardCurrencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC91BE627968CDD0008BC4C /* SmallCardCurrencyView.swift */; };
+		FDC91BEA27969B3A0008BC4C /* CloseViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC91BE927969B3A0008BC4C /* CloseViewButton.swift */; };
 		FDDA140B278580B3008E5C94 /* FavoriteRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDA140A278580B2008E5C94 /* FavoriteRowView.swift */; };
 		FDDA140D2785B14B008E5C94 /* FavoritePopUpExchangeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDA140C2785B14B008E5C94 /* FavoritePopUpExchangeViewModel.swift */; };
 		FDDA14112786B1AA008E5C94 /* FavoritePopUpCurrencyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDA14102786B1AA008E5C94 /* FavoritePopUpCurrencyViewModel.swift */; };
@@ -106,6 +107,7 @@
 		FDC91BE1279679940008BC4C /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		FDC91BE4279688F70008BC4C /* PercentageChangesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercentageChangesView.swift; sourceTree = "<group>"; };
 		FDC91BE627968CDD0008BC4C /* SmallCardCurrencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallCardCurrencyView.swift; sourceTree = "<group>"; };
+		FDC91BE927969B3A0008BC4C /* CloseViewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseViewButton.swift; sourceTree = "<group>"; };
 		FDDA140A278580B2008E5C94 /* FavoriteRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRowView.swift; sourceTree = "<group>"; };
 		FDDA140C2785B14B008E5C94 /* FavoritePopUpExchangeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePopUpExchangeViewModel.swift; sourceTree = "<group>"; };
 		FDDA14102786B1AA008E5C94 /* FavoritePopUpCurrencyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePopUpCurrencyViewModel.swift; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 			children = (
 				FDC91BE4279688F70008BC4C /* PercentageChangesView.swift */,
 				FDC91BE1279679940008BC4C /* LoadingView.swift */,
+				FDC91BE927969B3A0008BC4C /* CloseViewButton.swift */,
 			);
 			path = "Additional Views";
 			sourceTree = "<group>";
@@ -413,6 +416,7 @@
 				FDDBB8E4276A39E400B17DE0 /* Sources */,
 				FDDBB8E5276A39E400B17DE0 /* Frameworks */,
 				FDDBB8E6276A39E400B17DE0 /* Resources */,
+				FDC91BE8279695B30008BC4C /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -528,6 +532,26 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		FDC91BE8279695B30008BC4C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		FDDBB8E4276A39E400B17DE0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -570,6 +594,7 @@
 				FDDA140B278580B3008E5C94 /* FavoriteRowView.swift in Sources */,
 				FDADC287276B1E5C00938E57 /* MarketForExchangeDetailedViewModel.swift in Sources */,
 				FDADC29C276C68E700938E57 /* FavoritesViewModel.swift in Sources */,
+				FDC91BEA27969B3A0008BC4C /* CloseViewButton.swift in Sources */,
 				FDDBB916276A3A1100B17DE0 /* MainView.swift in Sources */,
 				FDADC29E276C695D00938E57 /* LocalDataStorageManager.swift in Sources */,
 				FD3ED6792795522600614E5C /* MainViewViewModel.swift in Sources */,

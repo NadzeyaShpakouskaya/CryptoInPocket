@@ -11,7 +11,7 @@ struct DetailedCurrencyView: View {
     @ObservedObject var detailedViewModel: DetailedCurrencyViewModel
     
     var body: some View {
-        VStack{
+        VStack {
             SmallCardCurrencyView(viewModel: detailedViewModel)
             Spacer()
             MarketsForCurrencySectionView(id: detailedViewModel.currencyId)
@@ -19,7 +19,6 @@ struct DetailedCurrencyView: View {
             .navigationTitle(detailedViewModel.currencyName)
     }
 }
-
 
 struct DetailedCurrencyView_Previews: PreviewProvider {
     static var previews: some View {
